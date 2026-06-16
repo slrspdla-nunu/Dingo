@@ -1,0 +1,342 @@
+@charset "UTF-8";
+
+/* ============================================================
+   For Fans (sub page) - 딩고 서브 페이지
+   header / footer 는 style.css 의 것을 그대로 재사용
+   ============================================================ */
+
+.sub_page {
+    background: #F3F3F3;
+}
+
+#fans_hero *,
+.fans_tab *,
+.fans_main * {
+    box-sizing: border-box;
+}
+
+.fans_main .container {
+    position: relative;
+    max-width: 1400px;
+    width: calc(100% - 80px);
+    margin: 0 auto;
+}
+
+/* ---------- HERO ---------- */
+#fans_hero {
+    position: relative;
+    height: 706px;
+    background: url(../image/sub_For\ Fans/sub_hero.png) center/cover no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+#fans_hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#fans_hero .hero_deco {
+    position: absolute;
+    z-index: 2;
+}
+
+#fans_hero .hero_deco.d1 { width: 52px; left: 11%; top: 27%; transform: rotate(-10deg); }
+#fans_hero .hero_deco.d2 { width: 26px; left: 85%; top: 36%; transform: rotate(15deg); }
+#fans_hero .hero_deco.d3 { width: 28px; left: 82%; top: 60%; }
+
+#fans_hero .hero_inner {
+    position: relative;
+    z-index: 3;
+    max-width: 1400px;
+    width: calc(100% - 80px);
+    margin: 0 auto;
+}
+
+#fans_hero .hero_title {
+    color: #fff;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+#fans_hero .hero_title span {
+    color: #FF0039;
+}
+
+#fans_hero .hero_sub {
+    margin-top: 24px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1.3;
+}
+
+/* ---------- TAB NAV (pill) ---------- */
+.fans_tab {
+    position: sticky;
+    top: 20px;
+    z-index: 12;
+    width: 587px;
+    max-width: calc(100% - 80px);
+    margin: -43px auto 0;
+}
+
+.fans_tab ul {
+    display: flex;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.fans_tab li {
+    flex: 1;
+    text-align: center;
+}
+
+.fans_tab li a {
+    display: inline-block;
+    position: relative;
+    padding: 26px 0;
+    font-size: 25px;
+    font-weight: 500;
+    color: #161616;
+    transition: color 0.25s;
+}
+
+.fans_tab li.on a {
+    color: #FF4747;
+    font-weight: 600;
+}
+
+.fans_tab li.on a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #FF4747;
+    border-radius: 2px 2px 0 0;
+}
+
+.fans_tab li:not(.on) a:hover {
+    color: #FF4747;
+}
+
+/* ============================================================
+   SECTION 01 : With Dingo
+   ============================================================ */
+.fans_intro {
+    position: relative;
+    padding: 150px 0 120px;
+    overflow: hidden;
+}
+
+.fans_intro .intro_watermark {
+    position: absolute;
+    left: 18px;
+    top: 90px;
+    width: 640px;
+    height: auto;
+    z-index: 0;
+    opacity: 0.6;
+    pointer-events: none;
+    user-select: none;
+}
+
+.fans_intro .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    z-index: 1;
+}
+
+.fans_intro .intro_left {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    width: 520px;
+}
+
+.fans_intro .intro_title {
+    font-size: 45px;
+    font-weight: 700;
+    color: #161616;
+    margin-bottom: 30px;
+}
+
+.fans_intro .intro_title span {
+    color: #FF4747;
+}
+
+.fans_intro .intro_desc {
+    font-size: 20px;
+    font-weight: 300;
+    color: #161616;
+    line-height: 1.6;
+}
+
+.fans_intro .intro_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 42px;
+    padding: 13px 36px;
+    background: #161616;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 26px;
+    transition: background 0.25s, transform 0.25s;
+}
+
+.fans_intro .intro_btn_arrow {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.25s;
+}
+
+.fans_intro .intro_btn:hover {
+    background: #FF4747;
+    transform: translateY(-2px);
+}
+
+.fans_intro .intro_btn:hover .intro_btn_arrow {
+    transform: translateX(4px);
+}
+
+.fans_intro .intro_right {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    text-align: right;
+}
+
+.fans_intro .intro_right img {
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    display: inline-block;
+}
+
+/* ============================================================
+   SECTION 02 : Feature card
+   ============================================================ */
+.fans_feature {
+    padding: 0 0 110px;
+}
+
+.fans_feature .feature_card {
+    display: flex;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    padding: 56px 0;
+}
+
+.fans_feature .feature_card li {
+    flex: 1;
+    text-align: center;
+    padding: 0 40px;
+}
+
+.fans_feature .feature_card li + li {
+    border-left: 1px solid #D9D9D9;
+}
+
+.fans_feature .feature_card .feat_icon {
+    height: 83px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 22px;
+}
+
+.fans_feature .feature_card strong {
+    display: block;
+    font-size: 30px;
+    font-weight: 700;
+    color: #FE161E;
+    margin-bottom: 16px;
+}
+
+.fans_feature .feature_card p {
+    font-size: 20px;
+    font-weight: 500;
+    color: #161616;
+    line-height: 1.5;
+}
+
+/* ============================================================
+   SECTION 03 : Image strip (full bleed)
+   ============================================================ */
+.fans_gallery {
+    margin-bottom: 130px;
+}
+
+.fans_gallery ul {
+    display: flex;
+    gap: 16px;
+}
+
+.fans_gallery li {
+    flex: 1;
+    overflow: hidden;
+}
+
+.fans_gallery li img {
+    width: 100%;
+    height: 355px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.fans_gallery li:hover img {
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   반응형
+   ============================================================ */
+@media (max-width: 1080px) {
+    .fans_intro .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .fans_intro .intro_left {
+        width: 100%;
+    }
+    .fans_intro .intro_right {
+        width: 100%;
+        text-align: center;
+    }
+    .fans_feature .feature_card {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .fans_feature .feature_card li + li {
+        border-left: 0;
+        border-top: 1px solid #D9D9D9;
+        padding-top: 40px;
+    }
+    .fans_gallery ul {
+        flex-direction: column;
+    }
+    .fans_gallery li img {
+        height: 240px;
+    }
+}
+
+@media (max-width: 600px) {
+    #fans_hero .hero_title { font-size: 42px; }
+    #fans_hero .hero_sub { font-size: 20px; }
+    .fans_tab li a { font-size: 18px; padding: 18px 0; }
+    .fans_intro .intro_title { font-size: 34px; }
+    .fans_intro .intro_desc { font-size: 16px; }
+    .fans_intro .intro_btn { font-size: 20px; }
+}

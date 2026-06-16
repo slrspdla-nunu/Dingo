@@ -1,0 +1,407 @@
+@charset "UTF-8";
+
+/* ============================================================
+   Dingo (sub page) - header/footer 는 style.css 재사용
+   ============================================================ */
+
+.dingo_page {
+    background: #F3F3F3;
+}
+
+#sub_hero *,
+.dingo_tab *,
+.dingo_main * {
+    box-sizing: border-box;
+}
+
+.dingo_main .container {
+    position: relative;
+    max-width: 1400px;
+    width: calc(100% - 80px);
+    margin: 0 auto;
+}
+
+/* ---------- HERO ---------- */
+#sub_hero {
+    position: relative;
+    height: 706px;
+    background: #0a0a0a url(../image/sub_Dingo/sub_hero.png) center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+#sub_hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 45%, rgba(0, 0, 0, 0) 70%);
+}
+
+#sub_hero .hero_inner {
+    position: relative;
+    z-index: 3;
+    max-width: 1400px;
+    width: calc(100% - 80px);
+    margin: 0 auto;
+}
+
+#sub_hero .hero_title {
+    color: #FF0039;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+#sub_hero .hero_sub {
+    margin-top: 24px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1.3;
+}
+
+#sub_hero .hero_deco {
+    position: absolute;
+    z-index: 2;
+}
+
+#sub_hero .hero_deco.d1 { width: 52px; left: 11%; top: 27%; transform: rotate(-10deg); }
+#sub_hero .hero_deco.d2 { width: 26px; left: 85%; top: 36%; transform: rotate(15deg); }
+#sub_hero .hero_deco.d3 { width: 28px; left: 82%; top: 60%; }
+
+/* ---------- TAB NAV ---------- */
+.dingo_tab {
+    position: sticky;
+    top: 20px;
+    z-index: 12;
+    max-width: 1222px;
+    width: calc(100% - 80px);
+    margin: -43px auto 0;
+}
+
+.dingo_tab ul {
+    display: flex;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.dingo_tab li {
+    flex: 1;
+    text-align: center;
+}
+
+.dingo_tab li a {
+    display: inline-block;
+    position: relative;
+    padding: 26px 0;
+    font-size: 25px;
+    font-weight: 500;
+    color: #161616;
+    transition: color 0.25s;
+}
+
+.dingo_tab li.on a,
+.dingo_tab li a:hover {
+    color: #FF4747;
+    font-weight: 700;
+}
+
+.dingo_tab li.on a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #FF4747;
+    border-radius: 2px 2px 0 0;
+}
+
+/* ---------- INTRO ---------- */
+.intro {
+    padding: 100px 0 30px;
+}
+
+.intro_title {
+    text-align: center;
+    font-size: 45px;
+    font-weight: 700;
+    color: #161616;
+    line-height: 1.35;
+}
+
+.intro_title span {
+    color: #FF4747;
+}
+
+/* ---------- STATS ---------- */
+.stats_sec {
+    padding: 30px 0 80px;
+}
+
+.stats_sec .stat_card {
+    display: flex;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.05);
+    margin-bottom: 28px;
+    padding: 50px 0;
+}
+
+.stats_sec .stat_card:last-child {
+    margin-bottom: 0;
+}
+
+.stats_sec .stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    position: relative;
+}
+
+.stats_sec .stat:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 12%;
+    height: 76%;
+    width: 1px;
+    background: #ECECEC;
+}
+
+.stats_sec .stat img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.stats_sec .stat strong {
+    font-size: 45px;
+    font-weight: 700;
+    color: #262727;
+}
+
+.stats_sec .stat .c_red { color: #FE161E; }
+.stats_sec .stat .c_orange { color: #FFB119; }
+.stats_sec .stat .c_green { color: #4C9D69; }
+
+.stats_sec .stat span {
+    font-size: 25px;
+    font-weight: 500;
+    color: #161616;
+}
+
+/* ---------- CHARTS ---------- */
+.charts_sec {
+    padding: 40px 0 120px;
+}
+
+.charts_title {
+    font-size: 45px;
+    font-weight: 700;
+    color: #161616;
+    line-height: 1.35;
+    margin-bottom: 60px;
+}
+
+.charts_title span {
+    color: #FF4747;
+}
+
+.charts {
+    display: flex;
+    gap: 40px;
+}
+
+.chart_wrap {
+    flex: 1;
+    min-width: 0;
+}
+
+.chart_card {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.05);
+    padding: 44px 40px 36px;
+}
+
+.chart_label {
+    display: block;
+    width: max-content;
+    margin: 30px auto 0;
+    background: #FF4747;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 600;
+    padding: 14px 38px;
+    border-radius: 40px;
+}
+
+/* 범례 */
+.chart_card .legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px 26px;
+    margin-bottom: 36px;
+}
+
+.chart_card .legend span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #161616;
+}
+
+.chart_card .legend i {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.dot.black { background: #161616; }
+.dot.red { background: #FE161E; }
+.dot.grey { background: #9E9E9E; }
+.dot.light { background: #E5E5E5; }
+
+/* 막대 영역 */
+.chart_card .bars {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 300px;
+    padding-top: 30px;
+}
+
+.chart_card .col {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.chart_card .cat {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #161616;
+    white-space: nowrap;
+}
+
+/* 누적 막대 (왼쪽) */
+.stacked .stack {
+    width: 38px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+}
+
+.stacked .seg {
+    width: 100%;
+    height: 0;
+    transition: height 0.9s cubic-bezier(.22, .61, .36, 1);
+}
+
+.stacked .seg.red {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stacked .seg.red span {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.5s;
+}
+
+.stacked .seg.black { background: #161616; }
+.stacked .seg.red { background: #FE161E; }
+.stacked .seg.grey { background: #9E9E9E; }
+.stacked .seg.light { background: #E5E5E5; }
+
+/* 그룹 막대 (오른쪽) */
+.grouped .pair {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 7px;
+    height: 100%;
+}
+
+.grouped .gbar {
+    width: 24px;
+    height: 0;
+    border-radius: 6px 6px 0 0;
+    position: relative;
+    transition: height 0.9s cubic-bezier(.22, .61, .36, 1);
+}
+
+.grouped .gbar span {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.5s;
+}
+
+.grouped .gbar.red { background: #FE161E; }
+.grouped .gbar.red span { color: #FE161E; }
+.grouped .gbar.grey { background: #9E9E9E; }
+.grouped .gbar.grey span { color: #9E9E9E; }
+
+/* 막대 등장 후 값 표시 */
+.chart_card.in .seg.red span,
+.chart_card.in .gbar span {
+    opacity: 1;
+}
+
+/* ---------- reveal ---------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 1100px) {
+    #sub_hero .hero_title { font-size: 48px; }
+    .intro_title, .charts_title { font-size: 34px; }
+    .stats_sec .stat strong { font-size: 34px; }
+    .stats_sec .stat span { font-size: 18px; }
+    .charts { flex-direction: column; }
+}
+
+@media (max-width: 700px) {
+    #sub_hero { height: 540px; }
+    #sub_hero .hero_title { font-size: 36px; }
+    #sub_hero .hero_sub { font-size: 18px; }
+    .dingo_tab li a { font-size: 16px; padding: 18px 0; }
+    .stats_sec .stat_card { flex-direction: column; gap: 36px; }
+    .stats_sec .stat:not(:last-child)::after { display: none; }
+    .intro_title, .charts_title { font-size: 26px; }
+}

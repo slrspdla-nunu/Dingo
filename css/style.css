@@ -1,0 +1,1721 @@
+@charset "UTF-8";
+@import url(font.css);
+@import url(reset.css);
+
+header {
+    max-width: 1400px;
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 15;
+    }
+
+header::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 327px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+header h1 {
+    display: block;
+    z-index: 7;
+    margin-bottom: 5px;
+}
+
+    header .left_space,
+    header .icon_box {
+        width: 150px;
+        display: flex;
+    }
+
+header .menu_box {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+header nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+header nav .gnb {
+    display: flex;
+    white-space: nowrap;
+    } 
+
+header nav .gnb li {
+    font-size: 20px;
+    position: relative;
+    font-weight: 300;
+    }
+
+header nav .gnb li a {
+    color: #fff;
+    display: block;
+    padding: 8px 60px;
+    font-size: 20px;
+    }
+
+header nav .gnb > li:hover > a {
+    color: #FF0F0F;
+    font-weight: 500;
+    }
+
+header nav .gnb li .lnb {
+    position: absolute;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    top: 100%;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    transition: 1s;
+}
+
+header nav .gnb li:hover .lnb{
+    width: 100%;
+    max-height: 450px;
+}
+
+header nav .gnb li .lnb li a {
+    text-align: center;
+    padding: 10px 0;
+    display: block;
+    align-content: center;
+    transition: 0.3s;
+    font-size: 18px;
+}
+
+header nav .gnb li .lnb li a:hover {
+    background: rgba(17, 17, 17, 0.7);
+    color: #FF0F0F;
+}
+
+header .icon_box {
+    justify-content: flex-end;
+    gap: 43px;
+}
+
+header .icon_box .lang_wrap {
+    position: relative;
+    display: inline-block;
+}
+
+header .icon_box .material-symbols-outlined {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    z-index: 100;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    transition: 0.3s;
+}
+
+header .icon_box .material-symbols-outlined:hover {
+    color: #FF0F0F;
+}
+
+header .icon_box .lang_list {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    min-width: 100px;
+}
+
+header .icon_box .lang_list.on {
+    display: block;
+}
+
+header .icon_box .lang_list li {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+header .icon_box .lang_list li:hover {
+    background: rgba(17, 17, 17, 0.7);
+}
+
+header .icon_box .lang_list li a {
+    color: #fff;
+    font-size: 15px;
+    padding: 8px 12px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header .icon_box .lang_list li a:hover {
+    color: #FF0F0F;
+    font-weight: 500;
+}
+
+.copy_msg {
+    position: absolute;
+    top: 120px;
+    right: 90px;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-size: 15px;
+    display: none;
+    z-index: 20;
+}
+
+
+
+#hero {
+    background: #F3F3F3;
+    z-index: 7;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+#hero .textbox {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    text-shadow: 0px 4px 60px #000;
+    z-index: 2;
+}
+
+#hero .textbox strong {
+    font-size: 100px;
+    font-weight: 900;
+    color: #fff;
+}
+
+#hero .textbox span {
+    color: #FF0F0F;
+}
+
+#hero video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#hero .info_text {
+    position: absolute;
+    bottom: 50px;
+    left: 260px;
+    font-size: 20px;
+    font-weight: 200;
+    color: #fff;
+}
+
+#hero .info_text .name {
+    margin-bottom: 5px;
+}
+
+.hero_paging {
+    position: fixed;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 50;
+}
+
+.hero_paging li {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.85);
+    color: #111;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.hero_paging li:hover {
+    transform: scale(1.12);
+}
+
+.hero_paging li.on {
+    background: #fff;
+    color: #FF0F0F;
+}
+
+
+
+#section_box {
+    background: #F3F3F3;
+}
+
+#section_box #section01 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 130px;
+}
+
+#section_box #section01 .container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#section_box #section01 .container .deco {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#section_box #section01 .container .deco_star {
+    width: 64px;
+    top: 113px;
+    left: 86px;
+    transform-origin: top left;
+    transform: rotate(-10.07deg);
+}
+
+#section_box #section01 .container .deco_loop_left {
+    width: 260px;
+    top: 145px;
+    left: 184px;
+    transform-origin: top left;
+    transform: rotate(8.07deg);
+}
+
+#section_box #section01 .container .deco_note {
+    width: 33px;
+    top: 148px;
+    right: 219px;
+}
+
+#section_box #section01 .container .deco_loop_right {
+    width: 167px;
+    top: 236px;
+    right: 290px;
+    transform: rotate(30deg);
+}
+
+#section_box #section01 .container .deco_brush {
+    width: 269px;
+    left: -150px;
+    top: 770px;
+}
+
+#section_box #section01 .container .title {
+    margin-top: 130px;
+    position: relative;
+    z-index: 1;
+}
+
+#section_box #section01 .container .title p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #FF0F0F;
+    margin-bottom: 10px;
+}
+
+#section_box #section01 .container .title strong {
+    font-size: 50px;
+    font-weight: 600;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 13px;
+    text-align: center;
+    display: block;
+}
+
+#section_box #section01 .container .title strong span {
+    color: #FF0F0F;
+    display: inline-block;
+    margin-left: 7px;
+}
+
+#section_box #section01 .container .title > span {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 400;
+    color: #777777;
+    line-height: 28px;
+}
+
+#section_box #section01 .container .curation_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+#section_box #section01 .container .curation_nav .filter_tab {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #C5C5C5;
+    border-radius: 50px;
+}
+
+#section_box #section01 .container .curation_nav .filter_tab li a {
+    display: block;
+    padding: 13px 30px;
+    font-size: 18px;
+    color: #747474;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#section_box #section01 .container .curation_nav .filter_tab li.on a {
+    background: #FF4747;
+    color: #fff;
+    font-weight: 600;
+}
+
+
+#section_box #section01 .container .curation_nav .slider_controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#section_box #section01 .container .curation_nav .slider_controls .paging {
+    font-size: 18px;
+    font-weight: 600;
+    color: #B8B8B8;
+}
+
+#section_box #section01 .container .curation_nav .slider_controls .paging .now {
+    color: #FF0F0F;
+}
+
+#section_box #section01 .container .curation_nav .slider_controls .paging .total {
+    color: #B8B8B8;
+}
+
+
+#section_box #section01 .container .curation_nav .slider_controls .btn_group {
+    gap: 15px;
+    display: flex;
+}
+
+#section_box #section01 .container .curation_nav .slider_controls .btn_group .prev,
+#section_box #section01 .container .curation_nav .slider_controls .btn_group .next {
+    border: 1px solid #D9D9D9;
+    padding: 0;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    color: #B8B8B8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#section_box #section01 .container .curation_nav .slider_controls .btn_group button svg {
+    width: 13px;
+    height: 13px;
+    display: block;
+}
+
+
+
+#section_box #section01 .container .card_container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+}
+
+.card_big {
+    width: calc(50% - 15px);
+    position: relative;
+}
+
+.card_big .play_btn,
+.card_small .play_btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    left: auto;
+    width: 46px;
+    height: 46px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+.card_big .play_btn .material-symbols-outlined,
+.card_small .play_btn .material-symbols-outlined {
+    font-size: 26px;
+    color: #1a1a1a;
+}
+
+.card_big figure {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.card_big figure img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.card_big .text {
+    position: absolute;
+    bottom: 35px;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.card_big .text .spp {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 15px;
+    background: #FF4747;
+    border-radius: 20px;
+    color: #fff;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.card_big .text .view_title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.card_big .text .view_info {
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.card_big .text .view_box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.card_big .text .view_box img {}
+.card_big .text .view_box .view_num {
+    font-size: 15px;
+    color: #fff;
+}
+
+
+
+.card_small {
+    width: calc(50% - 15px);
+}
+
+.card_small ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+}
+
+.card_small ul li {
+    width: calc(50% - 15px);
+    position: relative;
+}
+
+.card_small ul li img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card_small .play_btn .material-symbols-outlined.md-40 {
+    display: block;
+    font-size: 26px;
+}
+
+.card_small .text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.card_small .text .title {
+    text-align: left;
+}
+
+.card_small .text .view_title {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    left: 20px;
+    bottom: 45px;
+    display: block;
+}
+
+
+.card_small .text .view_box {
+    position: absolute;
+    display: flex;
+    left: 20px;
+    bottom: 20px;
+    gap: 10px;
+    align-items: center;
+
+}
+.card_small .text .view_box .view_num {}
+
+
+.bottom_banner {
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+.bottom_banner .inner_box {
+    max-width: 1400px;
+    margin: 0 auto;
+    border: 1px solid #C5C5C5;
+    margin-top: 60px;
+    padding: 25px 27px;
+    border-radius: 20px;
+}
+.inner_box ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
+.inner_box ul .banner_box {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border-right: 1px solid #D9D9D9;
+    padding-right: 25px;
+    margin-right: 25px;
+    justify-content: center;
+}
+
+.inner_box ul .banner_box:nth-last-child(1) {
+    border: none;
+    margin-right: 0;
+    padding-right: 0
+}
+
+.inner_box ul .text_box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.inner_box ul .banner_box strong {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 7px;
+    display: block;
+    white-space: nowrap;
+}
+.inner_box ul .banner_box span {
+    display: inline-block;
+    font-size: 14px;
+    color: #9E9E9E;
+    white-space: nowrap;
+}
+
+
+
+#section02 {
+    width: 100%;
+    height: 486px;
+    background: linear-gradient(to right, #FF0F0F, #FFBE32);
+    position: relative;
+    overflow: hidden;
+}
+
+#section02::before {
+    content: "";
+    position: absolute;
+    right: -42px;
+    top: 290px;
+    width: 268px;
+    height: 268px;
+    border-radius: 50%;
+    background: rgba(255, 215, 131, 0.29);
+}
+
+#section02::after {
+    content: "";
+    position: absolute;
+    right: 60px;
+    top: 45px;
+    width: 120px;
+    height: 120px;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.35) 2px, transparent 2px);
+    background-size: 18px 18px;
+}
+
+#section02 .container {
+    max-width: 1400px;
+    width: calc(100% - 80px);
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+#section02 .container .text_box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    color: #fff;
+    padding-left: 0;
+    width: 410px;
+}
+#section02 .container .text_box h2 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+#section02 .container .text_box strong {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 27px;
+}
+#section02 .container .text_box span {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    margin-bottom: 63px;
+}
+#section02 .container .text_box a {
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 30px;
+    color: #fff;
+    background: #121212;
+    gap: 10px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#section02 .container .text_box a img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+}
+
+#section02 .container .card_box {
+    width: 780px;
+}
+
+#section02 .container .card_box ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+#section02 .container .card_box .card {
+    width: 240px;
+    min-height: 340px;
+    padding: 40px 20px 35px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background: #F8DDDB;
+    box-shadow: 8px 10px 18px rgba(80, 36, 29, 0.28);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#section02 .container .card_box .card figure {
+    width: 95px;
+    height: 95px;
+    margin-bottom: 30px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#section02 .container .card_box .card figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#section02 .container .card_box .card strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #FF0F0F;
+    font-size: 42px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+#section02 .container .card_box .card span:nth-of-type(1) {
+    display: block;
+    margin-bottom: 45px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #111;
+}
+
+#section02 .container .card_box .card span:nth-of-type(2) {
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    color: #A36E66;
+    position: relative;
+}
+
+#section02 .container .card_box .card span:nth-of-type(2)::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -25px;
+    width: 36px;
+    height: 1px;
+    background: #FF4747;
+}
+
+
+
+#section03 {
+    background: #EBEBEB;
+    padding: 130px 0 120px;
+}
+
+#section03 .container {
+    max-width: 1400px;
+    width: calc(100% - 80px);
+    margin: 0 auto;
+    position: relative;
+}
+
+#section03 .section03_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 45px;
+}
+
+#section03 .section03_title h2 {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    font-size: 42px;
+    font-weight: 700;
+    color: #111;
+}
+
+#section03 .section03_title h2 span {
+    color: #FF4747;
+}
+
+#section03 .section03_title h2 i {
+    width: 145px;
+    height: 3px;
+    background: linear-gradient(to right, #FF4747, #161616);
+}
+
+#section03 .section03_title h2 em {
+    font-style: normal;
+}
+
+#section03 .playlist_search {
+    width: 447px;
+    height: 42px;
+    border: 1px solid #BFBFBF;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    box-sizing: border-box;
+}
+
+#section03 .playlist_search input {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    background: none;
+    font-size: 13px;
+    color: #777;
+    font-family: 'Paperozi', sans-serif;
+}
+
+#section03 .playlist_search input::placeholder {
+    color: #999;
+    font-family: 'Paperozi', sans-serif;
+}
+
+#section03 .playlist_search button {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+#section03 .playlist_search button img {
+    width: 100%;
+    height: 100%;
+}
+
+#section03 .playlist_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#section03 .player_box {
+    width: 690px;
+    min-height: 640px;
+    position: relative;
+}
+
+#section03 .section03_deco {
+    position: absolute;
+    pointer-events: none;
+}
+
+#section03 .deco_note_left {
+    width: 43px;
+    left: -98px;
+    top: 279px;
+}
+
+#section03 .deco_star_player {
+    width: 64px;
+    left: 717px;
+    top: 553px;
+    transform-origin: top left;
+    transform: rotate(-10.07deg);
+}
+
+#section03 .deco_loop_player {
+    width: 154px;
+    left: 598px;
+    top: -15px;
+    transform: rotate(8.07deg);
+}
+
+#section03 .deco_note_playlist {
+    width: 28px;
+    top: 67px;
+    right: -60px;
+}
+
+#section03 .record_area .record_line {
+    position: absolute;
+    left: 332px;
+    top: 37px;
+    width: 398px;
+    height: 398px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 레코드 뒤 그림자 (SVG: #777777 원 + 블러) */
+#section03 .record_area .record_shadow {
+    position: absolute;
+    left: 344px;
+    top: 64px;
+    width: 374px;
+    height: 374px;
+    border-radius: 50%;
+    background: #5a5a5a;
+    opacity: 0.75;
+    filter: blur(11px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 숨겨진 유튜브 오디오 플레이어 */
+#yt-player {
+    position: fixed;
+    left: -9999px;
+    top: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#section03 .record_area .s3_deco {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#section03 .record_area .s3_deco1 {
+    width: 495px;
+    left: -203px;
+    top: -207px;
+}
+
+#section03 .record_area .s3_deco2 {
+    width: 555px;
+    left: 344px;
+    top: 106px;
+}
+
+#section03 .record_area {
+    height: 475px;
+    position: relative;
+}
+
+#section03 .album_cover {
+    width: 431px;
+    height: 431px;
+    position: absolute;
+    left: 0;
+    top: 20px;
+    z-index: 3;
+    box-shadow: 0 13px 20px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+}
+
+/* 앨범 커버 위 타이틀 태그 (SVG 기준 위치/각도) */
+#section03 .album_cover .album_tag {
+    position: absolute;
+    left: -17px;
+    top: -23px;
+    width: 380px;
+    height: 95px;
+    z-index: 4;
+    pointer-events: none;
+}
+
+#section03 .album_cover .album_tag img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#section03 .album_cover .album_tag span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-7.68deg);
+    color: #BEF800;
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+#section03 .album_cover img,
+#section03 .record_img,
+#section03 .record_arm {
+    display: block;
+}
+
+#section03 .album_cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes recordSpin {
+    to { transform: rotate(360deg); }
+}
+
+#section03 .record_img {
+    width: 372px;
+    position: absolute;
+    left: 345px;
+    top: 50px;
+    z-index: 1;
+    transform-origin: center center;
+    animation: recordSpin 4s linear infinite;
+    animation-play-state: paused;
+}
+
+#section03 .record_img.spinning {
+    animation-play-state: running;
+}
+
+#section03 .record_arm {
+    width: 159px;
+    position: absolute;
+    left: 585px;
+    top: 42px;
+    z-index: 2;
+}
+
+#section03 .now_playing {
+    width: 431px;
+    position: relative;
+    padding-left: 25px;
+    box-sizing: border-box;
+}
+
+#section03 .now_playing strong {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 5px;
+}
+
+#section03 .now_playing span {
+    display: block;
+    font-size: 13px;
+    color: #777;
+}
+
+#section03 .now_playing .like_btn {
+    position: absolute;
+    right: 0;
+    top: 12px;
+    cursor: pointer;
+    line-height: 0;
+}
+
+#section03 .now_playing .like_btn svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+#section03 .now_playing .like_btn svg path {
+    fill: none;
+    stroke: #FF4747;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: fill 0.15s ease;
+}
+
+#section03 .now_playing .like_btn.liked svg path {
+    fill: #FF4747;
+}
+
+#section03 .progress_bar {
+    width: 431px;
+    padding-left: 25px;
+    margin-top: 22px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* 진행 바 = 이퀄라이저(파형) 막대 */
+#section03 .progress_bar .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 28px;
+    position: relative;
+}
+
+#section03 .progress_bar .bar .wave {
+    width: 3px;
+    flex: 0 0 3px;
+    height: 50%;
+    background: #FF4747;
+    border-radius: 2px;
+    transform-origin: center;
+    visibility: hidden;        /* 재생된 막대만 표시 */
+}
+
+#section03 .progress_bar .bar .wave.on {
+    visibility: visible;       /* 재생된 구간 = 이퀄라이저 */
+}
+
+/* 남은 구간 = 회색 선 */
+#section03 .progress_bar .bar .bar_line {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    height: 3px;
+    background: #CFCFCF;
+    border-radius: 2px;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+/* 재생 위치 동그라미 핸들 */
+#section03 .progress_bar .bar .bar_handle {
+    position: absolute;
+    top: 50%;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #FF4747;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+/* 재생 중에는 재생된 막대가 출렁임 */
+#section03.is-playing .progress_bar .bar .wave.on {
+    animation: wavePulse 0.85s ease-in-out infinite;
+}
+
+@keyframes wavePulse {
+    0%, 100% { transform: scaleY(0.75); }
+    50%      { transform: scaleY(1.2); }
+}
+
+#section03 .progress_bar .time {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #888;
+}
+
+#section03 .player_controls {
+    width: 431px;
+    padding-left: 25px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+#section03 .player_controls button {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+#section03 .player_controls button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#section03 .player_controls button svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+/* 이전/다음 곡 아이콘 */
+#section03 .player_controls button:nth-child(2) svg,
+#section03 .player_controls button:nth-child(4) svg {
+    color: #1F1F1F;
+}
+
+/* 셔플/리스트 아이콘 */
+#section03 .player_controls button:nth-child(1) svg,
+#section03 .player_controls button:nth-child(5) svg {
+    color: #777777;
+}
+
+#section03 .player_controls .play_control {
+    width: 70px;
+    height: 70px;
+    border: none;
+    padding: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FFBE32 0%, #FF4747 100%);
+    position: relative;
+}
+
+#section03 .player_controls .play_control img {
+    display: none;
+}
+
+/* 재생(▶) 삼각형 36x36 흰색 */
+#section03 .player_controls .play_control::before {
+    content: "";
+    position: absolute;
+    left: calc(50% + 4px);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+    border-left: 36px solid #FFFFFF;
+}
+
+#section03 .player_controls .play_control::after {
+    content: "";
+    display: none;
+}
+
+/* 일시정지(❚❚) 흰색 바 - 재생 중 */
+#section03 .player_controls .play_control.is-playing::before,
+#section03 .player_controls .play_control.is-playing::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 9px;
+    height: 32px;
+    border: 0;
+    border-radius: 2px;
+    background: #FFFFFF;
+    display: block;
+}
+
+#section03 .player_controls .play_control.is-playing::before {
+    left: calc(50% - 13px);
+}
+
+#section03 .player_controls .play_control.is-playing::after {
+    left: calc(50% + 4px);
+}
+
+#section03 .playlist_box {
+    width: 596px;
+    position: relative;
+}
+
+#section03 .playlist_tools {
+    display: flex;
+    justify-content: flex-end;
+    gap: 23px;
+    margin-bottom: 15px;
+}
+
+#section03 .playlist_tools button {
+    width: 20px;
+    height: 20px;
+    color: #777777;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#section03 .playlist_tools button img {
+    width: 100%;
+    height: 100%;
+}
+
+#section03 .playlist_tools button svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    color: #777777;
+}
+
+#section03 .track_list {
+    height: 569px;
+    padding: 18px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 15px;
+    background: #F3F3F3;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.16);
+    position: relative;
+    scrollbar-width: thin;                    /* Firefox */
+    scrollbar-color: #FF4747 transparent;     /* Firefox (그라데이션 미지원 → 빨강) */
+}
+
+/* 떠다니는 형광 녹색 하이라이트 (다음 곡으로 부드럽게 이동) */
+#section03 .track_list .track_highlight {
+    position: absolute;
+    border-radius: 12px;
+    background: linear-gradient(to right, #D9FF45, rgba(255, 255, 255, 0.45));
+    transition: top 0.45s ease;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 그라데이션 캡슐 스크롤바 (play 버튼과 동일한 주황→빨강) - 얇게 */
+#section03 .track_list::-webkit-scrollbar {
+    width: 6px;
+}
+
+#section03 .track_list::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 8px 0;
+}
+
+#section03 .track_list::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #FFBE32 0%, #FF4747 100%);
+    border-radius: 10px;
+}
+
+#section03 .track_list::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #FFB01A 0%, #FF2D2D 100%);
+}
+
+#section03 .track_list li {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0 18px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+#section03 .track_list .track_num {
+    width: 22px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    flex-shrink: 0;
+}
+
+#section03 .track_list li.on .track_num {
+    position: relative;
+    color: transparent;
+}
+
+#section03 .track_list li.on .track_num::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 9px solid #111;
+}
+
+#section03 .track_list figure {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+#section03 .track_list figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#section03 .track_list strong {
+    flex: 1;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: #111;
+}
+
+#section03 .track_list em {
+    font-style: normal;
+    font-size: 12px;
+    color: #777;
+}
+
+footer {
+    background: #161616;
+    padding: 45px 0;
+}
+
+footer .footer_inner {
+    max-width: 1400px;
+    width: calc(100% - 80px);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+footer h2 {
+    width: 120px;
+    margin-right: 85px;
+}
+
+footer h2 img {
+    width: 100%;
+    display: block;
+}
+
+footer .footer_info {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 18px;
+    row-gap: 8px;
+    width: 410px;
+    font-size: 12px;
+    color: #ddd;
+}
+
+footer .footer_info a {
+    color: #ddd;
+}
+
+footer .copyright {
+    margin-left: auto;
+    font-size: 12px;
+    color: #ddd;
+}
+
+/* ============================================================
+   스크롤 / 호버 효과  (정지 상태 디자인은 그대로, 상호작용만 추가)
+   ============================================================ */
+
+/* ---------- 공통 트랜지션 (정지 외형 변화 없음) ---------- */
+.card_big,
+.card_small ul li,
+.inner_box ul .banner_box,
+#section02 .container .card_box .card,
+.curation_nav .btn_group button,
+.card_big .play_btn,
+.card_small .play_btn,
+.player_controls button,
+.playlist_tools button,
+.playlist_search button,
+#section03 .track_list li,
+.filter_tab li a,
+#section02 .text_box a,
+footer .footer_info a {
+    transition: transform 0.35s ease, box-shadow 0.35s ease,
+                background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* 이미지 줌을 위한 클립 (정지 상태에선 넘치는 게 없어 외형 동일) */
+.card_big,
+.card_small ul li,
+#section02 .container .card_box .card figure {
+    overflow: hidden;
+}
+
+.card_big figure img,
+.card_small ul li img,
+.inner_box ul .banner_box figure img,
+#section02 .container .card_box .card figure img {
+    transition: transform 0.5s ease;
+}
+
+/* ---------- 섹션1 : 큐레이션 카드 ---------- */
+.card_big:hover,
+.card_small ul li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.16);
+}
+.card_big:hover figure img,
+.card_small ul li:hover img {
+    transform: scale(1.06);
+}
+
+.card_big .play_btn:hover,
+.card_small .play_btn:hover {
+    transform: scale(1.12);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+#section_box #section01 .container .curation_nav .slider_controls .btn_group button:hover {
+    background: #161616;
+    border-color: #161616;
+    color: #fff;
+}
+
+.filter_tab li:not(.on) a:hover {
+    background: #f3f3f3;
+    color: #FF4747;
+}
+
+/* ---------- 섹션1 : 하단 배너 ---------- */
+.inner_box ul .banner_box:hover {
+    transform: translateY(-6px);
+}
+.inner_box ul .banner_box:hover figure img {
+    transform: scale(1.08);
+}
+
+/* ---------- 섹션2 : 통계 카드 ---------- */
+#section02 .container .card_box .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+#section02 .container .card_box .card:hover figure img {
+    transform: scale(1.08);
+}
+#section02 .text_box a img {
+    transition: transform 0.3s ease;
+}
+#section02 .text_box a:hover {
+    color: #FF4747;
+}
+#section02 .text_box a:hover img {
+    transform: translateX(6px);
+}
+
+/* ---------- 섹션3 : 플레이어 / 플레이리스트 ---------- */
+.player_controls button:hover,
+.playlist_tools button:hover,
+.playlist_search button:hover {
+    transform: scale(1.15);
+}
+#section03 .track_list li:not(.on):hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+/* ---------- 푸터 ---------- */
+footer .footer_info a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* ---------- 스크롤 등장 (JS가 body.scroll-fx 부여 시에만 숨김) ---------- */
+body.scroll-fx .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    will-change: opacity, transform;
+}
+body.scroll-fx .reveal.in {
+    opacity: 1;
+    transform: none;
+}
+
+/* ============================================================
+   섹션3 추가 효과 : 이퀄라이저 · 앨범 전환 · 레코드 광택 · 데코 float
+   ============================================================ */
+
+/* ---------- 이퀄라이저 음파 바 ---------- */
+#section03 .eq {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 14px;
+}
+#section03 .eq i {
+    display: block;
+    width: 3px;
+    height: 100%;
+    background: #FF4747;
+    border-radius: 2px;
+    transform-origin: bottom center;
+    transform: scaleY(0.35);
+    animation: eqBar 0.8s ease-in-out infinite;
+    animation-play-state: paused;   /* 재생 중에만 움직임 */
+}
+#section03 .eq i:nth-child(2){ animation-duration: 0.66s; animation-delay: .18s; }
+#section03 .eq i:nth-child(3){ animation-duration: 0.94s; animation-delay: .34s; }
+#section03 .eq i:nth-child(4){ animation-duration: 0.74s; animation-delay: .10s; }
+#section03.is-playing .eq i { animation-play-state: running; }
+@keyframes eqBar {
+    0%, 100% { transform: scaleY(0.3); }
+    50%      { transform: scaleY(1); }
+}
+
+
+/* 플레이리스트 현재곡 번호 자리 이퀄라이저 */
+#section03 .track_list .track_num { position: relative; }
+#section03 .track_list .track_eq {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+#section03 .track_list .track_eq i { height: 11px; }
+#section03.is-playing .track_list li.on .track_num { color: transparent; }
+#section03.is-playing .track_list li.on .track_eq  { display: flex; }
+/* 재생 중엔 ▶ 삼각형 대신 이퀄라이저 표시 */
+#section03.is-playing .track_list li.on .track_num::before { display: none; }
+
+/* ---------- 앨범 커버 곡 전환 크로스페이드 ---------- */
+#section03 .album_cover > img {
+    transition: filter 0.2s ease, opacity 0.2s ease;
+}
+#section03 .album_cover > img.cover-swap {
+    filter: blur(2px);
+    opacity: 0.85;
+}
+
+/* ---------- 레코드 광택 스윕 ---------- */
+#section03 .record_area .record_glare {
+    position: absolute;
+    left: 345px;
+    top: 50px;
+    width: 372px;
+    height: 372px;
+    border-radius: 50%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+#section03 .record_area .record_glare::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -70%;
+    width: 55%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: rotate(18deg);
+    animation: glareSweep 5s ease-in-out infinite;
+}
+@keyframes glareSweep {
+    0%        { left: -70%; }
+    55%, 100% { left: 130%; }
+}
+
+/* ---------- 데코 둥둥 떠다니기 (회전 transform 유지 + translate만 애니메이션) ---------- */
+#section03 .deco_note_left,
+#section03 .deco_star_player,
+#section03 .deco_loop_player,
+#section03 .deco_note_playlist {
+    animation: decoFloat 4s ease-in-out infinite;
+}
+#section03 .deco_star_player   { animation-duration: 4.6s; animation-delay: .3s; }
+#section03 .deco_loop_player   { animation-duration: 5.2s; animation-delay: .6s; }
+#section03 .deco_note_playlist { animation-duration: 4.2s; animation-delay: .9s; }
+@keyframes decoFloat {
+    0%, 100% { translate: 0 0; }
+    50%      { translate: 0 -11px; }
+}

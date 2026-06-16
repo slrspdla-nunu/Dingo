@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD solution | dingo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sub_AD_solution.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body class="sub_page ad_page">
+
+    <header>
+        <h1><a href="index.html"><img src="image/main/logo.png" alt="logo"></a></h1>
+        <div class="menu_box">
+            <div class="left_space"></div>
+            <nav>
+                <ul class="gnb">
+                    <li><a href="#">COMPANY</a>
+                        <ul class="lnb">
+                            <li><a href="sub_About.html">About</a></li>
+                            <li><a href="#">IR & News</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">CONTENT</a>
+                        <ul class="lnb">
+                            <li><a href="sub_Dingo.html">Dingo</a></li>
+                            <li><a href="#">Dingo channel</a></li>
+                            <li><a href="#">Dingo Original</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">BUSINESS</a>
+                        <ul class="lnb">
+                            <li><a href="sub_AD_solution.html">AD solution</a></li>
+                            <li><a href="#">Live Entertainment</a></li>
+                            <li><a href="#">Dingo Members</a></li>
+                            <li><a href="#">Dingo Partners</a></li>
+                            <li><a href="#">MMG</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">CONTACT US</a>
+                        <ul class="lnb">
+                            <li><a href="sub_For_Fans.html">For Fans</a></li>
+                            <li><a href="#">For Business</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+           <div class="icon_box">
+                <div class="lang_wrap">
+                    <button class="material-symbols-outlined">language</button>
+                        <ul class="lang_list">
+                            <li><a href="#">한국어</a></li>
+                            <li><a href="#">English</a></li>
+                            <li><a href="#">中文</a></li>
+                            <li><a href="#">日本語</a></li>
+                        </ul>
+                </div>
+                <button class="material-symbols-outlined btn_share">share</button>
+           </div>
+        </header>
+        </div>
+
+    <!-- HERO -->
+    <section id="ad_hero">
+        <img src="image/sub_About/deco1.png" alt="" class="hero_deco d1">
+        <img src="image/sub_About/deco2.png" alt="" class="hero_deco d2">
+        <img src="image/sub_About/deco6.png" alt="" class="hero_deco d3">
+        <div class="hero_inner">
+            <h2 class="hero_title"><span class="ad">AD</span> solution</h2>
+            <ul class="hero_pills">
+                <li class="on"><a href="#">Branded Content</a></li>
+                <li><a href="#partners">Partners</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- BUSINESS TAB BAR -->
+    <nav class="ad_tab">
+        <ul>
+            <li class="on"><a href="sub_AD_solution.html">AD solution</a></li>
+            <li><a href="#">Live Entertainment</a></li>
+            <li><a href="#">Dingo Members</a></li>
+            <li><a href="#">Dingo Partners</a></li>
+            <li><a href="#">MMG</a></li>
+        </ul>
+    </nav>
+
+    <main class="ad_main">
+        <section class="branded">
+            <div class="container">
+                <h3 class="branded_title reveal">Branded <span>Content</span></h3>
+                <p class="branded_desc reveal">독보적인 콘텐츠 제작 역량을 바탕으로, 디지털 광고 시장에서 브랜디드 콘텐츠와 PPL 등 <br>광고주의 요구에 맞춘 맞춤영 광고를 제작하고 집행합니다.<br>브랜드 콜라보 음원 제작, 다양한 오리지널 포맷 활용, 브랜드 맞춤 기획 콘텐츠, <br>연간 소셜 채널 운영, 온/오프라인 통합 캠페인 등 다양한 산업의 광고주에게 최적화된 솔루션을 제공한다.</p>
+
+                <!-- 피처 캐러셀 -->
+                <div class="featured reveal">
+                    <button type="button" class="feat_nav feat_prev" aria-label="이전"><span class="material-symbols-outlined">chevron_left</span></button>
+                    <div class="feat_card" id="feat_card"></div>
+                    <button type="button" class="feat_nav feat_next" aria-label="다음"><span class="material-symbols-outlined">chevron_right</span></button>
+                </div>
+
+                <!-- 3열 케이스 그리드 -->
+                <ul class="case_grid" id="case_grid"></ul>
+            </div>
+        </section>
+
+        <!-- PARTNERS -->
+        <section class="partners" id="partners">
+            <div class="container">
+                <h3 class="partners_title reveal">Partners</h3>
+                <p class="partners_desc reveal">독자적인 IP(오리지널 콘텐츠)와 파트너십 IP(제작 투자 콘텐츠)를 활용한 광고 등 다양한 형태의 솔루션을 제공하며,<br>연평균 50개 이상의 광고 파트너사와 협력하고 있습니다.</p>
+            </div>
+
+            <!-- 파트너 로고 마퀴 (JS로 렌더) -->
+            <div class="partners_marquee reveal" id="partners_marquee"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer_inner">
+            <h2><a href="#"><img src="image/main/makeus_logo.png" alt="MAKE US"></a></h2>
+            <div class="footer_info">
+                <p>서울 강남구 봉은사로 123길 36</p>
+                <p><a href="mailto:contact@makeus.com">contact@makeus.com</a></p>
+                <p><a href="#">IR & News</a> <a href="#">Contact</a> <a href="#">Recruit</a> <a href="#">Apply</a></p>
+                <p><a href="#">개인정보처리방침</a></p>
+            </div>
+            <p class="copyright">Copyright © 2022 Makeus. All rights reserved.</p>
+        </div>
+    </footer>
+
+<script src="script/jquery-4.0.0.min.js"></script>
+<script src="script/header.js"></script>
+<script src="script/partners_logos.js"></script>
+<script src="script/sub_AD_solution.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+* {margin: 0; padding: 0;}
+li {list-style: none;}
+a {color: #333; text-decoration: none;}
+img {vertical-align: top;}
+
+button {border: 0; background: none;}
+body, input, button, textarea, select {font-family: 'Paperozi', sans-serif;}
