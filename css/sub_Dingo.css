@@ -388,6 +388,34 @@
 }
 
 /* ---------- 반응형 ---------- */
+
+/* ===== Tablet (~1080px) ===== */
+@media (max-width: 1080px) {
+    .dingo_main .container { width: calc(100% - 60px); }
+
+    #sub_hero { height: auto; min-height: 560px; padding: 120px 0 90px; }
+    #sub_hero .hero_inner { width: calc(100% - 60px); }
+    #sub_hero .hero_title { font-size: 48px; }
+    #sub_hero .hero_sub { font-size: 24px; }
+
+    .dingo_tab { width: calc(100% - 60px); }
+    .dingo_tab li a { font-size: 20px; padding: 22px 0; }
+
+    .intro { padding: 70px 0 24px; }
+    .intro_title, .charts_title { font-size: 34px; }
+
+    .stats_sec { padding: 24px 0 60px; }
+    .stats_sec .stat_card { padding: 40px 0; }
+    .stats_sec .stat strong { font-size: 34px; }
+    .stats_sec .stat span { font-size: 18px; }
+
+    .charts_sec { padding: 30px 0 90px; }
+    .charts { flex-direction: column; }
+    .charts_title { margin-bottom: 40px; }
+    .chart_card { padding: 36px 28px 28px; }
+}
+
+/* ===== Existing 1100 kept for safety / desktop-down ===== */
 @media (max-width: 1100px) {
     #sub_hero .hero_title { font-size: 48px; }
     .intro_title, .charts_title { font-size: 34px; }
@@ -396,12 +424,73 @@
     .charts { flex-direction: column; }
 }
 
+/* ===== Small tablet / large phone (~768px) ===== */
+@media (max-width: 768px) {
+    .dingo_main .container { width: calc(100% - 40px); }
+
+    #sub_hero { min-height: 480px; padding: 110px 0 70px; }
+    #sub_hero .hero_inner { width: calc(100% - 40px); }
+    #sub_hero .hero_title { font-size: 40px; }
+    #sub_hero .hero_sub { font-size: 20px; margin-top: 18px; }
+    /* 작은 화면에서 넘치는 장식 이미지 숨김 */
+    #sub_hero .hero_deco.d2,
+    #sub_hero .hero_deco.d3 { display: none; }
+
+    .dingo_tab { width: calc(100% - 40px); top: 14px; }
+    .dingo_tab li a { font-size: 16px; padding: 18px 0; }
+
+    .intro { padding: 56px 0 20px; }
+    .intro_title, .charts_title { font-size: 28px; }
+
+    .stats_sec .stat strong { font-size: 30px; }
+    .stats_sec .stat span { font-size: 17px; }
+
+    .chart_card { padding: 30px 22px 24px; }
+    .chart_label { font-size: 20px; padding: 12px 30px; }
+}
+
+/* ===== Existing 700 kept ===== */
 @media (max-width: 700px) {
-    #sub_hero { height: 540px; }
+    #sub_hero { min-height: 460px; }
     #sub_hero .hero_title { font-size: 36px; }
     #sub_hero .hero_sub { font-size: 18px; }
     .dingo_tab li a { font-size: 16px; padding: 18px 0; }
     .stats_sec .stat_card { flex-direction: column; gap: 36px; }
     .stats_sec .stat:not(:last-child)::after { display: none; }
     .intro_title, .charts_title { font-size: 26px; }
+}
+
+/* ===== Phone (~480px) ===== */
+@media (max-width: 480px) {
+    .dingo_main .container { width: calc(100% - 32px); }
+
+    #sub_hero { min-height: 420px; padding: 100px 0 60px; }
+    #sub_hero .hero_inner { width: calc(100% - 32px); }
+    #sub_hero .hero_title { font-size: 30px; }
+    #sub_hero .hero_sub { font-size: 15px; line-height: 1.4; }
+    /* 모든 장식 이미지 숨김 (가로 넘침 방지) */
+    #sub_hero .hero_deco { display: none; }
+
+    .dingo_tab { width: calc(100% - 32px); top: 10px; margin-top: -28px; }
+    .dingo_tab ul { border-radius: 22px; }
+    .dingo_tab li a { font-size: 13px; padding: 14px 0; }
+
+    .intro { padding: 44px 0 16px; }
+    .intro_title, .charts_title { font-size: 22px; }
+    .charts_title { margin-bottom: 30px; }
+
+    .stats_sec { padding: 16px 0 48px; }
+    .stats_sec .stat_card { padding: 34px 0; gap: 30px; border-radius: 18px; }
+    .stats_sec .stat strong { font-size: 26px; }
+    .stats_sec .stat span { font-size: 15px; }
+    .stats_sec .stat img { height: 40px; }
+
+    .charts_sec { padding: 24px 0 70px; }
+    .chart_card { padding: 24px 16px 20px; border-radius: 18px; }
+    .chart_label { font-size: 16px; padding: 10px 24px; margin-top: 22px; }
+    .chart_card .legend span { font-size: 14px; }
+    .chart_card .bars { height: 240px; }
+    .stacked .stack { width: 30px; }
+    .grouped .gbar { width: 18px; }
+    .chart_card .cat { font-size: 13px; }
 }

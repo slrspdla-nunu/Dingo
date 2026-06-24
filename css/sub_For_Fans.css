@@ -304,26 +304,61 @@
    반응형
    ============================================================ */
 @media (max-width: 1080px) {
+    /* HERO scales down on tablet */
+    #fans_hero {
+        height: 520px;
+    }
+    #fans_hero .hero_title {
+        font-size: 50px;
+    }
+    #fans_hero .hero_sub {
+        font-size: 24px;
+    }
+
+    /* SECTION 01 : stack text + image vertically and center */
+    .fans_intro {
+        padding: 110px 0 90px;
+    }
     .fans_intro .container {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
+    }
+    .fans_intro .intro_watermark {
+        width: 60%;
+        max-width: 480px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 60px;
     }
     .fans_intro .intro_left {
         width: 100%;
+        max-width: 640px;
+    }
+    .fans_intro .intro_desc br {
+        display: none;
     }
     .fans_intro .intro_right {
         width: 100%;
         text-align: center;
     }
+    .fans_intro .intro_right img {
+        max-width: 100%;
+    }
+
+    /* SECTION 02 : cards stack to 1 column */
     .fans_feature .feature_card {
         flex-direction: column;
         gap: 40px;
+        padding: 48px 0;
     }
     .fans_feature .feature_card li + li {
         border-left: 0;
         border-top: 1px solid #D9D9D9;
         padding-top: 40px;
     }
+
+    /* SECTION 03 : image strip becomes vertical stack */
     .fans_gallery ul {
         flex-direction: column;
     }
@@ -332,11 +367,167 @@
     }
 }
 
+/* small tablet / large phone */
+@media (max-width: 768px) {
+    #fans_hero {
+        height: 440px;
+    }
+    #fans_hero .hero_title {
+        font-size: 44px;
+    }
+    #fans_hero .hero_sub {
+        margin-top: 16px;
+        font-size: 21px;
+    }
+    /* hide decorative hero images so they don't overflow */
+    #fans_hero .hero_deco {
+        display: none;
+    }
+
+    .fans_main .container {
+        width: calc(100% - 48px);
+    }
+    #fans_hero .hero_inner {
+        width: calc(100% - 48px);
+    }
+
+    .fans_tab {
+        margin-top: -36px;
+        max-width: calc(100% - 48px);
+    }
+    .fans_tab li a {
+        font-size: 20px;
+        padding: 22px 0;
+    }
+
+    .fans_intro {
+        padding: 90px 0 70px;
+    }
+    .fans_intro .intro_title {
+        font-size: 38px;
+        margin-bottom: 24px;
+    }
+    .fans_intro .intro_desc {
+        font-size: 18px;
+    }
+    .fans_intro .intro_btn {
+        margin-top: 32px;
+        font-size: 21px;
+        padding: 12px 30px;
+    }
+
+    .fans_feature {
+        padding: 0 0 80px;
+    }
+    .fans_feature .feature_card strong {
+        font-size: 26px;
+    }
+    .fans_feature .feature_card p {
+        font-size: 18px;
+    }
+
+    .fans_gallery {
+        margin-bottom: 90px;
+    }
+    .fans_gallery li img {
+        height: 220px;
+    }
+}
+
+/* keep existing 600 tweaks, refined for overlap */
 @media (max-width: 600px) {
-    #fans_hero .hero_title { font-size: 42px; }
-    #fans_hero .hero_sub { font-size: 20px; }
+    #fans_hero .hero_title { font-size: 40px; }
+    #fans_hero .hero_sub { font-size: 19px; }
     .fans_tab li a { font-size: 18px; padding: 18px 0; }
     .fans_intro .intro_title { font-size: 34px; }
     .fans_intro .intro_desc { font-size: 16px; }
     .fans_intro .intro_btn { font-size: 20px; }
+}
+
+/* phone */
+@media (max-width: 480px) {
+    .fans_main .container {
+        width: calc(100% - 32px);
+    }
+    #fans_hero {
+        height: 360px;
+    }
+    #fans_hero .hero_inner {
+        width: calc(100% - 32px);
+    }
+    #fans_hero .hero_title {
+        font-size: 34px;
+    }
+    #fans_hero .hero_sub {
+        margin-top: 14px;
+        font-size: 16px;
+    }
+
+    .fans_tab {
+        top: 12px;
+        margin-top: -30px;
+        max-width: calc(100% - 32px);
+    }
+    .fans_tab li a {
+        font-size: 15px;
+        padding: 15px 0;
+    }
+
+    .fans_intro {
+        padding: 70px 0 56px;
+    }
+    .fans_intro .intro_watermark {
+        display: none;
+    }
+    .fans_intro .intro_title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    .fans_intro .intro_desc {
+        font-size: 15px;
+    }
+    .fans_intro .intro_btn {
+        margin-top: 28px;
+        font-size: 17px;
+        padding: 11px 26px;
+        border-radius: 22px;
+    }
+    .fans_intro .intro_btn_arrow {
+        width: 20px;
+        height: 20px;
+    }
+
+    .fans_feature {
+        padding: 0 0 60px;
+    }
+    .fans_feature .feature_card {
+        padding: 36px 0;
+        gap: 32px;
+    }
+    .fans_feature .feature_card li {
+        padding: 0 24px;
+    }
+    .fans_feature .feature_card li + li {
+        padding-top: 32px;
+    }
+    .fans_feature .feature_card .feat_icon {
+        height: 64px;
+        margin-bottom: 16px;
+    }
+    .fans_feature .feature_card strong {
+        font-size: 23px;
+    }
+    .fans_feature .feature_card p {
+        font-size: 16px;
+    }
+
+    .fans_gallery {
+        margin-bottom: 70px;
+    }
+    .fans_gallery ul {
+        gap: 16px;
+    }
+    .fans_gallery li img {
+        height: 200px;
+    }
 }
