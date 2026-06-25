@@ -276,6 +276,11 @@ header .icon_box .lang_list li a:hover {
     color: #FF0F0F;
 }
 
+/* 모바일 퀵 내비: 데스크탑에선 숨김 */
+.m_quick_nav { display: none; }
+
+html { scroll-behavior: smooth; }
+
 
 
 #section_box {
@@ -474,6 +479,9 @@ header .icon_box .lang_list li a:hover {
     position: relative;
 }
 
+/* 모바일 전용 캡션은 데스크탑에서 숨김 */
+.card_big .cb_caption_m { display: none; }
+
 .card_big .play_btn,
 .card_small .play_btn {
     position: absolute;
@@ -605,7 +613,7 @@ header .icon_box .lang_list li a:hover {
 }
 
 
-.card_small .text .view_box {
+.card_small .view_box {
     position: absolute;
     display: flex;
     left: 20px;
@@ -614,7 +622,7 @@ header .icon_box .lang_list li a:hover {
     align-items: center;
 
 }
-.card_small .text .view_box .view_num {}
+.card_small .view_box .view_num { color: #fff; }
 
 
 .bottom_banner {
@@ -1760,7 +1768,7 @@ body.scroll-fx .reveal.in {
     .inner_box ul .banner_box:nth-child(2) { border-right: none; margin-right: 0; padding-right: 0; }
 
     /* section02: 텍스트 + 카드 세로 */
-    #section02 { height: auto; padding: 70px 0; }
+    #section02 { height: auto; padding: 80px 0; }
     #section02 .container { flex-direction: column; gap: 50px; align-items: flex-start; }
     #section02 .container .text_box { width: 100%; }
     #section02 .container .card_box { width: 100%; }
@@ -1778,7 +1786,10 @@ body.scroll-fx .reveal.in {
 
 /* ---------- 태블릿 세로 / 큰 모바일 (≤768px) : 햄버거 메뉴 ---------- */
 @media (max-width: 768px) {
-    header { top: 26px; flex-direction: row; justify-content: space-between; padding: 0 18px; box-sizing: border-box; }
+    /* 오프캔버스 메뉴 패널이 화면 밖에서 가로 스크롤을 만들지 않도록 (sticky엔 영향 없음) */
+    html { overflow-x: clip; }
+
+    header { top: 26px; left: 0; transform: none; flex-direction: row; justify-content: space-between; padding: 0 18px; box-sizing: border-box; }
     header h1 { width: 90px; margin-bottom: 0; }
     header h1 img { width: 100%; }
 
@@ -1854,13 +1865,39 @@ body.scroll-fx .reveal.in {
     /* 히어로 */
     #hero .textbox strong { font-size: 56px; }
     #hero .info_text { left: 24px; bottom: 30px; font-size: 16px; }
-    .hero_paging { right: 14px; gap: 12px; }
-    .hero_paging li { width: 28px; height: 28px; font-size: 12px; }
+
+    /* 기존 페이징 점은 숨기고, 퀵 내비 2버튼으로 대체 */
+    .hero_paging { display: none; }
+    .m_quick_nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: fixed;
+        right: 14px;
+        bottom: 20px;
+        z-index: 50;
+    }
+    .m_quick_btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #fff;
+        color: #FF0F0F;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease;
+    }
+    .m_quick_btn:active { transform: scale(0.92); }
+    .m_quick_btn svg { width: 20px; height: 20px; }
 
     /* section 타이틀 축소 */
-    #section_box #section01 .container .title { margin-top: 90px; }
+    #section_box #section01 .container .title { margin-top: 80px; }
+    #section_box #section01 .container .title p { font-size: 14px; margin-bottom: 5px; }
     #section_box #section01 .container .title strong { font-size: 34px; }
-    #section_box #section01 .container .title > span { font-size: 16px; line-height: 24px; }
+    #section_box #section01 .container .title > span { font-size: 16px; line-height: 24px; word-break: keep-all; }
+    #section_box #section01 .container .title > span br { display: none; }
     #section_box #section01 { padding-bottom: 80px; }
 
     /* 큐레이션 nav 줄바꿈 */
@@ -1868,34 +1905,93 @@ body.scroll-fx .reveal.in {
     /* 필터 탭: 좁은 화면에서 넘치면 가로 스크롤 (스크롤바 숨김) */
     #section_box #section01 .container .curation_nav .filter_tab { justify-content: center; max-width: 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
     #section_box #section01 .container .curation_nav .filter_tab::-webkit-scrollbar { display: none; }
-    #section_box #section01 .container .curation_nav .filter_tab li { flex: 0 0 auto; }
-    #section_box #section01 .container .curation_nav .filter_tab li a { padding: 10px 18px; font-size: 15px; white-space: nowrap; }
-    #section_box #section01 .container .curation_nav .slider_controls { justify-content: flex-end; }
+    #section_box #section01 .container .curation_nav .filter_tab li { flex: 1 0 auto; }
+    #section_box #section01 .container .curation_nav .filter_tab li a { padding: 10px 16px; font-size: 15px; white-space: nowrap; text-align: center; }
+    /* 슬라이더 컨트롤(01/03 + 화살표)은 모바일에서 숨김 */
+    #section_box #section01 .container .curation_nav .slider_controls { display: none; }
 
-    .card_big .text .view_title { font-size: 22px; }
-    .card_big .text .view_info { font-size: 16px; }
+    /* 큰 카드(NCT): 모바일 - SPECIAL PICK·조회수는 이미지 좌하단, 제목/부제는 이미지 아래 좌측 정렬 */
+    .card_big figure { position: relative; }
+    .card_big figure .text { top: auto; bottom: 16px; left: 16px; }
+    .card_big figure .text .view_title,
+    .card_big figure .text .view_info { display: none; }
+    .card_big figure .text .spp { margin-bottom: 8px; }
+    .card_big figure .text .view_box .view_num { text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6); }
+
+    .card_big .cb_caption_m {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 12px;
+        text-align: left;
+    }
+    .card_big .cb_caption_m .cap_title { font-size: 20px; font-weight: 700; color: #161616; }
+    .card_big .cb_caption_m .cap_info { font-size: 14px; font-weight: 500; color: #6b6b6b; margin-top: 2px; }
 
     /* 작은 카드 2열 */
     .card_small ul { gap: 16px; }
     .card_small ul li { width: calc(50% - 8px); }
 
-    /* 하단 배너 1열 */
-    .inner_box ul .banner_box { width: 100%; border-right: none; margin-right: 0; padding-right: 0; border-bottom: 1px solid #D9D9D9; padding-bottom: 18px; margin-bottom: 18px; }
-    .inner_box ul .banner_box:nth-last-child(1) { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+    /* 작은 카드: 조회수는 이미지 좌하단 유지, 제목은 이미지 아래로(2줄 말줄임) */
+    .card_small ul li figure { position: relative; }
+    .card_small ul li figure .view_box { left: 12px; bottom: 12px; }
+    .card_small ul li figure .view_box .view_num { text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6); }
+    .card_small .text { position: static; padding-top: 10px; }
+    .card_small .text .view_title {
+        position: static; left: auto; bottom: auto;
+        color: #161616; font-size: 14px; font-weight: 600; line-height: 1.35;
+        display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .card_small .text .view_title br { display: none; }
+
+    /* 하단 배너 1열 + 아이콘/텍스트 정렬·패딩 정리 */
+    .bottom_banner .inner_box { padding: 16px 25px; margin-top: 40px; }
+    .inner_box ul .banner_box { width: 100%; gap: 25px; align-items: center; justify-content: flex-start; margin: 0; padding: 16px 0; border-right: none; border-bottom: 1px solid #D9D9D9; }
+    .inner_box ul .banner_box .text_box { flex: 1; }
+    .inner_box ul .banner_box:first-child { padding-top: 0; }
+    .inner_box ul .banner_box:nth-last-child(1) { border-bottom: none; padding-bottom: 0; }
+    .inner_box ul .banner_box figure { flex-shrink: 0; margin: 0; line-height: 0; }
+    .inner_box ul .banner_box figure img { width: 56px; height: auto; display: block; }
+    .inner_box ul .text_box { justify-content: center; }
+    .inner_box ul .banner_box strong { font-size: 17px; margin-bottom: 5px; }
+    .inner_box ul .banner_box span { font-size: 13px; line-height: 1.45; white-space: normal; word-break: keep-all; }
 
     /* section02 텍스트 축소 */
     #section02 .container .text_box h2 { font-size: 38px; }
-    #section02 .container .text_box strong { font-size: 24px; }
-    #section02 .container .text_box span { font-size: 16px; margin-bottom: 36px; }
+    #section02 .container .text_box strong { font-size: 24px; margin-bottom: 15px; }
+    #section02 .container .text_box span { font-size: 16px; margin-bottom: 30px; }
+
+    /* section02 카드 컴팩트하게 (세로 디자인 유지, 크기·내부 여백 축소) */
+    #section02 .container .card_box ul { gap: 20px; }
+    #section02 .container .card_box .card { width: 100%; max-width: 320px; min-height: 0; padding: 26px 20px; }
+    #section02 .container .card_box .card figure { width: 62px; height: 62px; margin-bottom: 16px; }
+    #section02 .container .card_box .card strong { font-size: 32px; }
+    #section02 .container .card_box .card span:nth-of-type(1) { margin-bottom: 24px; }
+    #section02 .container .card_box .card span:nth-of-type(2)::before { top: -12px; }
 
     /* section03 */
+    #section03 .container { width: calc(100% - 32px); }
     #section03 .section03_title { flex-direction: column; align-items: flex-start; gap: 18px; }
-    #section03 .section03_title h2 { font-size: 30px; gap: 14px; }
-    #section03 .section03_title h2 i { width: 80px; }
+    #section03 .section03_title h2 { font-size: 26px; gap: 12px; word-break: keep-all; flex-wrap: nowrap; }
+    #section03 .section03_title h2 span,
+    #section03 .section03_title h2 em { white-space: nowrap; }
+    #section03 .section03_title h2 i { width: 36px; flex-shrink: 0; }
     #section03 .playlist_search { width: 100%; }
+    #section03 .playlist_wrap { align-items: stretch; }
+    #section03 .player_box { min-height: 0; width: 100%; max-width: 100%; box-sizing: border-box; }
+    #section03 .playlist_box { width: 100%; max-width: 100%; box-sizing: border-box; }
+    /* 곡정보/진행바/컨트롤: 고정폭(431px)·들여쓰기 해제 후 가운데 정렬로 통일 */
+    #section03 .now_playing,
+    #section03 .progress_bar,
+    #section03 .player_controls { width: 100%; max-width: 100%; padding-left: 0; }
+    #section03 .now_playing { text-align: center; margin-top: 28px; }
+    #section03 .player_controls { justify-content: center; gap: 26px; }
 
-    /* 레코드 플레이어 영역은 축소 비율로 (절대좌표 기반이라 scale 사용) */
-    #section03 .record_area { transform: scale(0.78); transform-origin: top center; height: 380px; }
+    /* 큰 배경 장식은 모바일에서 숨김(잘림 방지), 레코드 디스크는 유지 */
+    #section03 .record_area .s3_deco1,
+    #section03 .record_area .s3_deco2 { display: none; }
+    /* 레코드 어셈블리: zoom으로 레이아웃까지 축소(앨범+디스크 유지) + 가운데 정렬 */
+    #section03 .record_area { zoom: 0.5; width: 744px; margin: 0 auto; }
 
     /* 푸터 세로 정렬 */
     footer .footer_inner { flex-direction: column; align-items: flex-start; gap: 18px; }
@@ -1907,22 +2003,21 @@ body.scroll-fx .reveal.in {
 /* ---------- 모바일 (≤480px) ---------- */
 @media (max-width: 480px) {
     #hero .textbox strong { font-size: 50px; }
-    #section_box #section01 .container .title strong { font-size: 28px; }
+    #section_box #section01 .container .title strong { font-size: 26px; }
 
     /* 필터 탭: 초소형 폰에서 더 촘촘하게 */
     #section_box #section01 .container .curation_nav .filter_tab li a { padding: 8px 12px; font-size: 13px; }
 
-    /* 작은 카드 2열: 썸네일이 작아지므로 오버레이 텍스트/버튼 축소 */
+    /* 작은 카드: 버튼·조회수 축소, 제목 캡션 미세 조정 */
     .card_small .play_btn { width: 36px; height: 36px; top: 12px; right: 12px; }
     .card_small .play_btn .material-symbols-outlined,
     .card_small .play_btn .material-symbols-outlined.md-40 { font-size: 20px; }
-    .card_small .text .view_title { font-size: 12px; left: 12px; bottom: 34px; }
-    .card_small .text .view_box { left: 12px; bottom: 12px; gap: 6px; }
-    .card_small .text .view_box img { width: 14px; }
-    .card_small .text .view_box .view_num { font-size: 11px; }
-    #section02 .container .card_box .card { width: 100%; max-width: 280px; }
+    .card_small .view_box { gap: 6px; }
+    .card_small .view_box img { width: 14px; }
+    .card_small .view_box .view_num { font-size: 12px; }
+    .card_small .text .view_title { font-size: 13px; }
+    #section02 .container .card_box .card { max-width: 300px; }
     #section02 .container .text_box h2 { font-size: 32px; }
     #section03 .section03_title h2 { font-size: 24px; }
-    #section03 .record_area { transform: scale(0.62); height: 320px; }
-    #section03 .album_cover { width: 360px; }
+    #section03 .record_area { zoom: 0.42; width: 744px; margin: 0 auto; }
 }

@@ -120,6 +120,9 @@
     border-radius: 2px 2px 0 0;
 }
 
+/* 탭 라벨 줄바꿈용 br: 기본(PC)에선 숨겨 한 줄 유지 */
+.dingo_tab .tab_br { display: none; }
+
 /* ---------- INTRO ---------- */
 .intro {
     padding: 100px 0 30px;
@@ -190,6 +193,9 @@
 .stats_sec .stat .c_red { color: #FE161E; }
 .stats_sec .stat .c_orange { color: #FFB119; }
 .stats_sec .stat .c_green { color: #4C9D69; }
+
+/* 통계 캐러셀 도트: 기본(PC)에선 숨김 */
+.stats_sec .stats_dots { display: none; }
 
 .stats_sec .stat span {
     font-size: 25px;
@@ -375,6 +381,12 @@
     opacity: 1;
 }
 
+/* 모바일 가로 스크롤 힌트 화살표 (스와이프 유도) */
+@keyframes hintNudge {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-50%) translateX(-6px); }
+}
+
 /* ---------- reveal ---------- */
 .reveal {
     opacity: 0;
@@ -428,19 +440,28 @@
 @media (max-width: 768px) {
     .dingo_main .container { width: calc(100% - 40px); }
 
-    #sub_hero { min-height: 480px; padding: 110px 0 70px; }
-    #sub_hero .hero_inner { width: calc(100% - 40px); }
-    #sub_hero .hero_title { font-size: 40px; }
-    #sub_hero .hero_sub { font-size: 20px; margin-top: 18px; }
+    /* 모바일 hero: About와 동일하게 (고정 height, 패딩 없음) */
+    #sub_hero { height: 460px; min-height: 0; padding: 0; }
+    /* 모바일 hero: 헤더 상단 그라데이션 옅게 (About와 동일) */
+    header::before { opacity: 0.3; }
+    /* 부제 줄 수 차이(3줄)로 제목이 위로 뜨는 것 보정 → About 제목 위치와 맞춤 */
+    #sub_hero .hero_inner { width: calc(100% - 40px); margin-top: 26px; }
+    #sub_hero .hero_title { font-size: 38px; }
+    #sub_hero .hero_sub { font-size: 20px; margin-top: 18px; word-break: keep-all; }
     /* 작은 화면에서 넘치는 장식 이미지 숨김 */
     #sub_hero .hero_deco.d2,
     #sub_hero .hero_deco.d3 { display: none; }
 
     .dingo_tab { width: calc(100% - 40px); top: 14px; }
-    .dingo_tab li a { font-size: 16px; padding: 18px 0; }
+    /* 탭: 높이 통일 + 세로 가운데, 밑줄은 텍스트 너비에 맞춤(2줄 라벨 단정하게) */
+    .dingo_tab li a { display: inline-flex; max-width: 100%; align-items: center; justify-content: center; text-align: center; min-height: 54px; padding: 8px 0; font-size: 14px; line-height: 1.25; }
+    .dingo_tab ul { overflow: visible; }
+    .dingo_tab li.on a::after { z-index: 2; }
+    .dingo_tab .tab_br { display: inline; }
 
     .intro { padding: 56px 0 20px; }
     .intro_title, .charts_title { font-size: 28px; }
+    .intro_title { text-align: left; }
 
     .stats_sec .stat strong { font-size: 30px; }
     .stats_sec .stat span { font-size: 17px; }
@@ -451,12 +472,15 @@
 
 /* ===== Existing 700 kept ===== */
 @media (max-width: 700px) {
-    #sub_hero { min-height: 460px; }
-    #sub_hero .hero_title { font-size: 36px; }
-    #sub_hero .hero_sub { font-size: 18px; }
-    .dingo_tab li a { font-size: 16px; padding: 18px 0; }
-    .stats_sec .stat_card { flex-direction: column; gap: 36px; }
+    /* 통계: 카드 1개씩 자동 슬라이드 (캐러셀) */
+    .stats_sec .container { overflow: hidden; }
+    .stats_sec .stats_track { display: flex; transition: transform 0.5s ease; }
+    .stats_sec .stat_card { flex: 0 0 100%; flex-direction: column; gap: 28px; margin: 0; box-shadow: none; }
     .stats_sec .stat:not(:last-child)::after { display: none; }
+    /* 도트 인디케이터 */
+    .stats_sec .stats_dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+    .stats_sec .stats_dots span { width: 8px; height: 8px; border-radius: 50%; background: #D9D9D9; cursor: pointer; transition: background 0.2s, width 0.2s; }
+    .stats_sec .stats_dots span.on { background: #FF4747; width: 20px; border-radius: 4px; }
     .intro_title, .charts_title { font-size: 26px; }
 }
 
@@ -464,26 +488,28 @@
 @media (max-width: 480px) {
     .dingo_main .container { width: calc(100% - 32px); }
 
-    #sub_hero { min-height: 420px; padding: 100px 0 60px; }
+    #sub_hero { height: 400px; min-height: 0; padding: 0; }
+    /* 모바일 hero: 어두운 오버레이 제거 (About와 동일) */
+    #sub_hero::after { display: none; }
     #sub_hero .hero_inner { width: calc(100% - 32px); }
-    #sub_hero .hero_title { font-size: 30px; }
-    #sub_hero .hero_sub { font-size: 15px; line-height: 1.4; }
+    #sub_hero .hero_title { font-size: 36px; }
+    #sub_hero .hero_sub { font-size: 17px; line-height: 1.4; }
     /* 모든 장식 이미지 숨김 (가로 넘침 방지) */
     #sub_hero .hero_deco { display: none; }
 
     .dingo_tab { width: calc(100% - 32px); top: 10px; margin-top: -28px; }
     .dingo_tab ul { border-radius: 22px; }
-    .dingo_tab li a { font-size: 13px; padding: 14px 0; }
+    .dingo_tab li a { min-height: 50px; padding: 8px 0; font-size: 12px; }
 
     .intro { padding: 44px 0 16px; }
     .intro_title, .charts_title { font-size: 22px; }
     .charts_title { margin-bottom: 30px; }
 
     .stats_sec { padding: 16px 0 48px; }
-    .stats_sec .stat_card { padding: 34px 0; gap: 30px; border-radius: 18px; }
-    .stats_sec .stat strong { font-size: 26px; }
-    .stats_sec .stat span { font-size: 15px; }
-    .stats_sec .stat img { height: 40px; }
+    .stats_sec .stat_card { padding: 40px 0; gap: 28px; border-radius: 18px; }
+    .stats_sec .stat strong { font-size: 32px; }
+    .stats_sec .stat span { font-size: 16px; }
+    .stats_sec .stat img { height: 48px; }
 
     .charts_sec { padding: 24px 0 70px; }
     .chart_card { padding: 24px 16px 20px; border-radius: 18px; }
@@ -491,6 +517,29 @@
     .chart_card .legend span { font-size: 14px; }
     .chart_card .bars { height: 240px; }
     .stacked .stack { width: 30px; }
-    .grouped .gbar { width: 18px; }
+    .stacked .seg.red span { font-size: 11px; }
+    /* 그룹 차트: 가로 스크롤 + 막대/묶음간격 키워 가독성 ↑ */
+    .charts_sec .grouped { position: relative; }
+    .charts_sec .grouped::after {
+        content: "";
+        position: absolute;
+        top: 48%;
+        right: 8px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF4747' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 6 15 12 9 18'/%3E%3C/svg%3E") center / 14px no-repeat;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+        pointer-events: none;
+        z-index: 3;
+        animation: hintNudge 1.4s ease-in-out infinite;
+    }
+    .charts_sec .grouped.scrolled::after { opacity: 0; transition: opacity 0.3s; }
+    .grouped .bars { overflow-x: auto; justify-content: flex-start; gap: 22px; padding-bottom: 6px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .grouped .bars::-webkit-scrollbar { display: none; }
+    .grouped .col { flex: 0 0 auto; }
+    .grouped .gbar { width: 26px; }
+    .grouped .pair { gap: 6px; }
+    .grouped .gbar span { font-size: 11px; top: -20px; }
     .chart_card .cat { font-size: 13px; }
 }

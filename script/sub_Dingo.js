@@ -118,3 +118,40 @@
         });
     }
 })();
+
+/* 통계 카드 자동 슬라이드 (모바일에서 카드 1개씩) */
+(function () {
+    var track = document.querySelector(".stats_sec .stats_track");
+    if (!track) return;
+    var cards = track.querySelectorAll(".stat_card");
+    var dots = document.querySelectorAll(".stats_sec .stats_dots span");
+    if (cards.length < 2) return;
+    var idx = 0, timer = null;
+    function isMobile() { return window.matchMedia("(max-width: 700px)").matches; }
+    function show(i) {
+        idx = (i + cards.length) % cards.length;
+        track.style.transform = isMobile() ? "translateX(" + (-100 * idx) + "%)" : "";
+        dots.forEach(function (d, di) { d.classList.toggle("on", di === idx); });
+    }
+    function start() { stop(); timer = setInterval(function () { if (isMobile()) show(idx + 1); }, 3500); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    dots.forEach(function (d, di) {
+        d.addEventListener("click", function () { show(di); start(); });
+    });
+    window.addEventListener("resize", function () {
+        if (!isMobile()) { track.style.transform = ""; } else { show(idx); }
+    });
+    show(0);
+    start();
+})();
+
+/* 그룹 차트 가로 스크롤 시 힌트 화살표 숨김 */
+(function () {
+    var g = document.querySelector(".charts_sec .grouped");
+    if (!g) return;
+    var bars = g.querySelector(".bars");
+    if (!bars) return;
+    bars.addEventListener("scroll", function () {
+        if (bars.scrollLeft > 10) g.classList.add("scrolled");
+    }, { passive: true });
+})();

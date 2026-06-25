@@ -832,6 +832,9 @@
     transform: translateY(0);
 }
 
+/* 탭 라벨 줄바꿈용 br: 기본(PC)에선 숨겨 한 줄 유지 */
+.about_tab .tab_br { display: none; }
+
 /* ============================================================
    반응형
    ============================================================ */
@@ -897,17 +900,25 @@
     .about_main .container { width: calc(100% - 40px); }
 
     .about_sec { padding: 80px 0; }
+    /* 모바일 About 한정: 헤더 상단 검은 그라데이션을 옅게 (히어로 텍스트 밝게) */
+    header::before { opacity: 0.3; }
     #sub_hero { height: 460px; }
     #sub_hero .hero_inner { width: calc(100% - 40px); }
     #sub_hero .hero_title { font-size: 38px; }
     #sub_hero .hero_sub { font-size: 20px; margin-top: 18px; }
-    #sub_hero .hero_sub br,
     #sub_hero .hero_deco.d2,
     #sub_hero .hero_deco.d3 { display: none; }
+    #sub_hero .hero_sub { word-break: keep-all; }
     #sub_hero .hero_deco.d1 { left: 5%; top: 22%; }
 
     .about_tab { width: calc(100% - 40px); margin-top: -28px; }
-    .about_tab li a { padding: 18px 0; font-size: 16px; }
+    /* 탭: 높이 통일 + 세로 가운데 정렬, 밑줄은 텍스트 너비에 맞춤(내용폭) */
+    .about_tab li a { display: inline-flex; max-width: 100%; align-items: center; justify-content: center; text-align: center; min-height: 54px; padding: 8px 0; font-size: 14px; line-height: 1.25; }
+    /* 둥근 모서리에 빨간 밑줄이 잘리지 않도록 오버플로 해제 + z-index */
+    .about_tab ul { overflow: visible; }
+    .about_tab li.on a::after { z-index: 2; }
+    /* 모바일: "Who We Are" 2줄로 */
+    .about_tab .tab_br { display: inline; }
 
     .sec_head h3 { font-size: 32px; }
     .sec_head .num { font-size: 22px; }
@@ -917,7 +928,7 @@
     #sec1 .sec1_body .txt p,
     #sec2 .sec2_desc p,
     #sec3 .sec3_desc,
-    #sec4 .sec4_desc { font-size: 17px; }
+    #sec4 .sec4_desc { font-size: 16px; }
 
     /* tags 카드: 세로 스택, 가로폭 채우기 */
     .sec1_tags { flex-direction: column; gap: 18px; margin-top: 40px; }
@@ -926,6 +937,7 @@
 
     #sec2 .sec2_bgtext { display: none; }
     #sec2 .sec2_cycle { height: auto; padding: 30px 16px; }
+    #sec2 .sec2_cycle img { max-width: 100%; }
 
     /* deco / 워터마크 숨김 (오버플로 방지) */
     #sec3 .s3_loop,
@@ -933,22 +945,40 @@
     #sec4 .s4_star,
     #sec4 .s4_note { display: none; }
 
-    /* TIMELINE : 연도 줄바꿈, 카드 가로 스크롤 허용 */
+    /* TIMELINE : 연도 가로 스크롤 띠 + 카드 세로 */
     .timeline { margin-top: 40px; }
-    .timeline .years { flex-wrap: wrap; gap: 16px 0; border: 0; }
-    .timeline .years li { width: 20%; text-align: center; }
-    .timeline .years li::after { display: none; }
-    .timeline .year_track,
-    .timeline .year_fill,
-    .timeline .year_handle { display: none; }
-    .timeline .cards { flex-wrap: wrap; width: auto; margin-top: 40px; }
-    .timeline .hcard { width: 100%; }
+    .timeline .years {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 24px;
+        overflow-x: auto;
+        padding: 4px 0 34px;
+        border-bottom: none;
+        /* 회색 선을 박스 안쪽(하단에서 14px)에 그려 점·동그라미가 잘리지 않게 */
+        background-image: linear-gradient(#D9D9D9, #D9D9D9);
+        background-repeat: no-repeat;
+        background-size: 100% 2px;
+        background-position: left bottom 14px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+    .timeline .years::-webkit-scrollbar { display: none; }
+    .timeline .years li { flex: 0 0 auto; width: auto; text-align: center; }
+    /* 점·빨간선·동그라미는 유지(선 위에 뜨도록 위치 조정), 드래그 트랙만 숨김 */
+    .timeline .year_track { display: none; }
+    .timeline .years li::after { bottom: -25px; }
+    .timeline .year_fill { bottom: 14px; }
+    .timeline .year_handle { bottom: 6px; }
+    .timeline .cards { flex-wrap: wrap; width: auto; margin-top: 32px; gap: 14px; min-height: 0 !important; align-content: flex-start; }
+    .timeline .hcard { width: 100%; padding: 18px 20px; }
     .timeline .hcard::after { display: none; }
+    .timeline .hcard .date { font-size: 16px; }
+    .timeline .hcard p { font-size: 16px; }
 
     /* SECTION 04 : 국가 선택 바 줄바꿈(가로 스크롤 방지) */
     #sec4 .feature_detail .fd_title { font-size: 22px; }
     .country_bar { flex-wrap: wrap; border-radius: 16px; }
-    .country_bar li { flex: 0 0 33.333%; padding: 16px 6px; }
+    .country_bar li { flex: 0 0 33.333%; padding: 16px 14px; justify-content: flex-start; }
     .country_bar li:not(:first-child)::before { display: none; }
     .country_bar li span { font-size: 15px; }
 }
@@ -958,14 +988,17 @@
     .about_main .container { width: calc(100% - 32px); }
 
     #sub_hero { height: 400px; }
+    #sub_hero::after { display: none; }
     #sub_hero .hero_inner { width: calc(100% - 32px); }
-    #sub_hero .hero_title { font-size: 30px; }
+    #sub_hero .hero_title { font-size: 36px; }
     #sub_hero .hero_sub { font-size: 17px; }
     #sub_hero .hero_deco { display: none; }
 
     .about_tab { width: calc(100% - 32px); margin-top: -24px; }
     .about_tab ul { border-radius: 18px; }
-    .about_tab li a { padding: 14px 2px; font-size: 13px; font-weight: 600; }
+    .about_tab li a { min-height: 50px; padding: 8px 0; font-size: 12px; font-weight: 600; }
+    /* 2줄로 접히는 탭은 박스를 가장 긴 줄 폭으로 줄여 밑줄이 텍스트를 넘지 않게 */
+    .about_tab li:last-child a { width: min-content; }
     .about_tab li.on a { font-weight: 700; }
 
     .sec_head h3 { font-size: 26px; }
@@ -974,8 +1007,12 @@
 
     #sec1 .sec1_dots { width: 90px; right: 10px; bottom: 20px; }
 
-    .sec1_tags li { flex-direction: column; text-align: center; gap: 14px; padding: 22px 16px; }
-    .sec1_tags li span { align-items: center; text-align: center; }
+    /* 폰: 가로형(아이콘 왼쪽 + 텍스트 오른쪽) + 아이콘 축소 */
+    .sec1_tags li { flex-direction: row; align-items: center; justify-content: flex-start; text-align: left; gap: 16px; padding: 16px 18px; }
+    .sec1_tags li span { align-items: flex-start; text-align: left; }
+    .sec1_tags li:nth-child(1) img,
+    .sec1_tags li:nth-child(2) img,
+    .sec1_tags li:nth-child(3) img { width: 46px; height: auto; }
 
     .map_legend { gap: 20px; }
 

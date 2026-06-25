@@ -129,11 +129,21 @@
     // ----- 드래그 스크럽 + 미끄러지는 핸들 -----
     var handle = null;
 
+    // 모바일 가로 스크롤 띠에서 선택 연도를 가운데로 스크롤 (데스크탑은 스크롤 불가라 무시됨)
+    function scrollYearIntoView(li) {
+        if (!yearsEl || !li) return;
+        if (yearsEl.scrollWidth <= yearsEl.clientWidth + 4) return;
+        var target = li.offsetLeft - (yearsEl.clientWidth - li.offsetWidth) / 2;
+        target = Math.max(0, Math.min(target, yearsEl.scrollWidth - yearsEl.clientWidth));
+        yearsEl.scrollTo({ left: target, behavior: "smooth" });
+    }
+
     function selectYear(li) {
         if (!li) return;
         yearItems.forEach(function (y) { y.classList.remove("on"); });
         li.classList.add("on");
         renderHistory(li.textContent.trim());
+        scrollYearIntoView(li);
     }
     function yearX(li) { return li.offsetLeft + li.offsetWidth / 2; }
     function nearestLi(x) {
@@ -262,6 +272,18 @@
 
     // 초기 표시 (기본 2024)
     renderHistory("2024");
+    // 로드 시 활성 연도를 띠 가운데로 (모바일). 폰트/레이아웃 완료 타이밍 대비해 여러 번 시도.
+    function initYearScroll() {
+        var a = activeLi();
+        if (!yearsEl || !a) return;
+        if (yearsEl.scrollWidth > yearsEl.clientWidth + 4) {
+            var t = a.offsetLeft - (yearsEl.clientWidth - a.offsetWidth) / 2;
+            yearsEl.scrollLeft = Math.max(0, Math.min(t, yearsEl.scrollWidth - yearsEl.clientWidth));
+        }
+    }
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(initYearScroll); }
+    window.addEventListener("load", initYearScroll);
+    setTimeout(initYearScroll, 600);
     if (handle) moveHandle(yearX(activeLi()), false);
     window.addEventListener("resize", function () {
         var on = activeLi();
