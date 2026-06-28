@@ -306,13 +306,21 @@
 @media (max-width: 1080px) {
     /* HERO scales down on tablet */
     #fans_hero {
-        height: 520px;
+        height: 560px;
     }
     #fans_hero .hero_title {
-        font-size: 50px;
+        font-size: 46px;
     }
     #fans_hero .hero_sub {
         font-size: 24px;
+    }
+    /* 태블릿: 탭/섹션 타이틀을 다른 서브 페이지와 맞춤 */
+    .fans_tab li a {
+        font-size: 20px;
+        padding: 22px 0;
+    }
+    .fans_intro .intro_title {
+        font-size: 38px;
     }
 
     /* SECTION 01 : stack text + image vertically and center */
@@ -370,14 +378,16 @@
 /* small tablet / large phone */
 @media (max-width: 768px) {
     #fans_hero {
-        height: 440px;
+        height: 460px;
     }
+    /* 모바일: 헤더 상단 검은 그라데이션 제거 */
+    header::before { display: none; }
     #fans_hero .hero_title {
-        font-size: 44px;
+        font-size: 38px;
     }
     #fans_hero .hero_sub {
-        margin-top: 16px;
-        font-size: 21px;
+        margin-top: 18px;
+        font-size: 20px;
     }
     /* hide decorative hero images so they don't overflow */
     #fans_hero .hero_deco {
@@ -385,31 +395,41 @@
     }
 
     .fans_main .container {
-        width: calc(100% - 48px);
+        width: calc(100% - 40px);
     }
     #fans_hero .hero_inner {
-        width: calc(100% - 48px);
+        width: calc(100% - 40px);
     }
 
     .fans_tab {
         margin-top: -36px;
-        max-width: calc(100% - 48px);
+        max-width: calc(100% - 40px);
     }
     .fans_tab li a {
-        font-size: 20px;
-        padding: 22px 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: 54px;
+        padding: 8px 0;
+        font-size: 14px;
+        line-height: 1.25;
     }
 
     .fans_intro {
         padding: 90px 0 70px;
     }
     .fans_intro .intro_title {
-        font-size: 38px;
+        font-size: 32px;
         margin-bottom: 24px;
     }
     .fans_intro .intro_desc {
-        font-size: 18px;
+        font-size: 16px;
+        text-align: left;
     }
+    /* 모바일: 온점(문장) 단위로 줄바꿈 + 문장 사이 간격 */
+    .fans_intro .intro_desc .s { display: block; }
+    .fans_intro .intro_desc .s:not(:first-child) { margin-top: 0.8em; }
     .fans_intro .intro_btn {
         margin-top: 32px;
         font-size: 21px;
@@ -423,7 +443,7 @@
         font-size: 26px;
     }
     .fans_feature .feature_card p {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .fans_gallery {
@@ -434,33 +454,29 @@
     }
 }
 
-/* keep existing 600 tweaks, refined for overlap */
-@media (max-width: 600px) {
-    #fans_hero .hero_title { font-size: 40px; }
-    #fans_hero .hero_sub { font-size: 19px; }
-    .fans_tab li a { font-size: 18px; padding: 18px 0; }
-    .fans_intro .intro_title { font-size: 34px; }
-    .fans_intro .intro_desc { font-size: 16px; }
-    .fans_intro .intro_btn { font-size: 20px; }
-}
-
 /* phone */
 @media (max-width: 480px) {
     .fans_main .container {
         width: calc(100% - 32px);
     }
     #fans_hero {
-        height: 360px;
+        height: 400px;
+    }
+    /* 모바일: hero 어두운 오버레이 제거 (다른 서브 페이지와 동일) */
+    #fans_hero::after {
+        display: none;
     }
     #fans_hero .hero_inner {
         width: calc(100% - 32px);
+        /* 제목 세로 위치를 다른 서브 페이지(149px)와 맞춤 */
+        margin-top: -22px;
     }
     #fans_hero .hero_title {
-        font-size: 34px;
+        font-size: 36px;
     }
     #fans_hero .hero_sub {
-        margin-top: 14px;
-        font-size: 16px;
+        margin-top: 18px;
+        font-size: 17px;
     }
 
     .fans_tab {
@@ -469,9 +485,12 @@
         max-width: calc(100% - 32px);
     }
     .fans_tab li a {
-        font-size: 15px;
-        padding: 15px 0;
+        min-height: 50px;
+        padding: 8px 0;
+        font-size: 12px;
+        font-weight: 600;
     }
+    .fans_tab li.on a { font-weight: 700; }
 
     .fans_intro {
         padding: 70px 0 56px;
@@ -480,11 +499,11 @@
         display: none;
     }
     .fans_intro .intro_title {
-        font-size: 30px;
+        font-size: 26px;
         margin-bottom: 20px;
     }
     .fans_intro .intro_desc {
-        font-size: 15px;
+        font-size: 16px;
     }
     .fans_intro .intro_btn {
         margin-top: 28px;
@@ -498,7 +517,7 @@
     }
 
     .fans_feature {
-        padding: 0 0 60px;
+        padding: 40px 0 60px;
     }
     .fans_feature .feature_card {
         padding: 36px 0;
@@ -511,8 +530,8 @@
         padding-top: 32px;
     }
     .fans_feature .feature_card .feat_icon {
-        height: 64px;
-        margin-bottom: 16px;
+        height: 54px;
+        margin-bottom: 14px;
     }
     .fans_feature .feature_card strong {
         font-size: 23px;

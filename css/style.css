@@ -1853,9 +1853,14 @@ body.scroll-fx .reveal.in {
     }
     header nav .gnb li:hover .lnb { max-height: none; }
     header nav .gnb li .lnb li a { text-align: left; padding: 8px 0; font-size: 15px; color: #cfcfcf; }
+    /* 현재 보고 있는 서브페이지 메뉴 항목은 빨강 강조 */
+    header nav .gnb li .lnb li a.current { color: #FF0F0F !important; font-weight: 600; transition: none; }
 
     header .icon_box { width: 100%; justify-content: flex-start; gap: 20px; margin-top: 20px; }
-    header .icon_box .lang_list { left: 50px; }
+    /* 모바일: 언어 목록은 아이콘 위로 펼쳐 화면 밖으로 넘어가지 않게 + 왼쪽 정렬 */
+    header .icon_box .lang_list { top: auto; bottom: calc(100% + 8px); left: 0; transform: none; }
+    /* 모바일: 링크 복사 메시지를 화면 하단 중앙 토스트로 */
+    .copy_msg { position: fixed; left: 50%; right: auto; top: auto; bottom: 40px; transform: translateX(-50%); }
 
     /* 햄버거 체크 시 X 모양 */
     .nav_toggle:checked ~ .nav_hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }

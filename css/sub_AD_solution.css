@@ -410,7 +410,7 @@
 /* ---------- 반응형 ---------- */
 @media (max-width: 1100px) {
     #ad_hero .hero_title { font-size: 46px; }
-    .branded_title { font-size: 34px; }
+    .branded_title { font-size: 38px; }
     .feat_card { flex-direction: column; height: auto; }
     .feat_card .feat_thumb { flex: none; aspect-ratio: 16/9; }
     .case_grid { grid-template-columns: repeat(2, 1fr); }
@@ -849,16 +849,35 @@
     background: #FF4747;
 }
 
+/* 케이스 그리드 "더보기" 버튼 (모바일에서 JS가 .show 토글) */
+.cases_more_wrap {
+    display: none;
+    margin-top: 28px;
+    text-align: center;
+}
+.cases_more_wrap.show { display: block; }
+.cases_more {
+    display: inline-block;
+    background: #161616;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 30px;
+    transition: 0.25s;
+}
+.cases_more:hover { background: #FF4747; }
+
 @media (max-width: 1100px) {
     .partners { padding: 80px 0 90px; }
-    .partners_title { font-size: 34px; }
+    .partners_title { font-size: 38px; }
     .pt_row { height: 150px; }
     .pt_logo img { height: 108px; }
 }
 
 @media (max-width: 600px) {
     .partners { padding: 64px 0 74px; }
-    .partners_title { font-size: 28px; }
+    .partners_title { font-size: 32px; }
     .partners_desc { font-size: 16px; }
     .partners_marquee { gap: 14px; }
     .pt_row { height: 112px; }
@@ -882,7 +901,7 @@
     #ad_hero .hero_inner,
     .ad_tab,
     .ad_main .container {
-        width: calc(100% - 48px);
+        width: calc(100% - 56px);
     }
 }
 
@@ -902,7 +921,7 @@
     .ad_tab li a { font-size: 18px; padding: 20px 0; }
 
     .branded { padding: 70px 0 90px; }
-    .branded_title { font-size: 34px; }
+    .branded_title { font-size: 38px; }
     .branded_desc { font-size: 18px; }
 
     .feat_card { flex-direction: column; height: auto; }
@@ -917,9 +936,13 @@
 /* ---------- 작은 태블릿 / 큰 폰 (max-width: 768px) ---------- */
 @media (max-width: 768px) {
     #ad_hero { height: 460px; }
+    /* 모바일: hero 배경 그라데이션만 제거 (원본 사진은 그대로) */
+    #ad_hero { background-image: url("../image/sub_AD solution/sub_hero.png"); }
+    /* 모바일: 헤더 상단 검은 그라데이션 제거 */
+    .ad_page header::before { display: none; }
     #ad_hero .hero_inner,
     .ad_tab,
-    .ad_main .container { width: calc(100% - 36px); }
+    .ad_main .container { width: calc(100% - 40px); }
     #ad_hero .hero_title { font-size: 38px; }
     #ad_hero .hero_pills { margin-top: 22px; }
     #ad_hero .hero_pills li a { font-size: 16px; padding: 11px 26px; }
@@ -930,15 +953,21 @@
     #ad_hero .hero_deco.d1 { left: 5%; top: 18%; width: 42px; }
 
     .ad_tab { top: 14px; margin: -34px auto 0; }
-    .ad_tab ul { border-radius: 22px; }
-    .ad_tab li a { font-size: 15px; padding: 16px 0; }
+    /* 둥근 모서리에 빨간 밑줄이 잘리지 않도록 오버플로 해제 + z-index */
+    .ad_tab ul { border-radius: 22px; overflow: visible; }
+    /* 탭: 가로 스크롤 대신 한 바 안에 모두 배치(긴 라벨은 2줄 줄바꿈) */
+    .ad_tab li a { display: inline-flex; max-width: 100%; align-items: center; justify-content: center; text-align: center; min-height: 54px; padding: 8px 0; font-size: 14px; line-height: 1.25; }
+    .ad_tab li.on a::after { z-index: 2; }
 
     .branded { padding: 56px 0 72px; }
-    .branded_title { font-size: 30px; }
+    .branded_title { font-size: 32px; }
     .branded_desc { margin-top: 22px; font-size: 16px; }
     /* 모바일에서 강제 줄바꿈 무시하고 자연스럽게 흐르도록 */
     .branded_desc br,
     .partners_desc br { display: none; }
+    /* 문장(온점) 단위 블록 + 문장 사이 간격 */
+    .branded_desc .s { display: block; }
+    .branded_desc .s:not(:first-child) { margin-top: 0.8em; }
 
     .featured { margin-top: 44px; }
     .feat_card .feat_info { padding: 32px 28px; }
@@ -947,6 +976,8 @@
     .feat_card .feat_btn { font-size: 16px; padding: 12px 26px; }
 
     .case_grid { margin-top: 56px; gap: 36px 22px; }
+    /* 모바일: 카드의 광고주·날짜 숨김 */
+    .case_meta { display: none; }
 
     /* 캐러셀 네비게이션 카드 안쪽으로 */
     .featured .feat_prev { left: 10px; }
@@ -955,10 +986,10 @@
     .featured .feat_nav .material-symbols-outlined { font-size: 26px; }
 
     .partners { padding: 64px 0 76px; }
-    .partners_title { font-size: 30px; }
+    .partners_title { font-size: 32px; }
     .partners_desc { font-size: 16px; }
-    .pt_row { height: 130px; }
-    .pt_logo img { height: 92px; }
+    .pt_row { height: 140px; }
+    .pt_logo img { height: 104px; }
 
     .partners_more { font-size: 18px; padding: 13px 34px; }
 
@@ -973,26 +1004,60 @@
     #ad_hero { height: 400px; }
     #ad_hero .hero_inner,
     .ad_tab,
-    .ad_main .container { width: calc(100% - 28px); }
-    #ad_hero .hero_title { font-size: 30px; }
+    .ad_main .container { width: calc(100% - 32px); }
+    /* 제목 세로 위치를 다른 서브 페이지(149px)와 맞춤 */
+    #ad_hero .hero_inner { margin-top: -8px; }
+    #ad_hero .hero_title { font-size: 36px; }
     #ad_hero .hero_pills { gap: 10px; margin-top: 18px; }
     #ad_hero .hero_pills li a { font-size: 14px; padding: 10px 20px; }
     #ad_hero .hero_deco.d1 { display: none; }
 
     .ad_tab { top: 10px; margin: -28px auto 0; }
-    /* 탭이 한 줄에 다 들어가도록 가로 스크롤 허용 + 폰트 축소 */
+    /* 탭 5개: 가로 스크롤 (스크롤바 숨김, 라벨 한 줄 유지) */
     .ad_tab ul {
         border-radius: 18px;
+        flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
     }
     .ad_tab ul::-webkit-scrollbar { display: none; }
-    .ad_tab li { flex: 0 0 auto; }
-    .ad_tab li a { font-size: 13px; padding: 14px 14px; white-space: nowrap; }
+    .ad_tab li { flex: 0 0 auto; padding: 0 16px; }
+    .ad_tab li a { min-height: 50px; padding: 8px 0; font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .ad_tab li.on a { font-weight: 700; }
+    /* 활성 빨간 밑줄: 다른 서브 페이지처럼 텍스트 폭에 맞추고 가려지지 않게 */
+    .ad_tab li.on a::after { z-index: 2; }
+    /* 가장자리 페이드: 더 스크롤 가능함을 암시 (Dingo 스크롤 힌트와 동일 톤) */
+    .ad_tab::after {
+        content: "";
+        position: absolute;
+        top: 0; bottom: 0; right: 0;
+        width: 44px;
+        border-radius: 0 18px 18px 0;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 75%);
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.25s;
+        z-index: 2;
+    }
+    .ad_tab::before {
+        content: "";
+        position: absolute;
+        top: 0; bottom: 0; left: 0;
+        width: 36px;
+        border-radius: 18px 0 0 18px;
+        background: linear-gradient(to left, rgba(255, 255, 255, 0), #fff 75%);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.25s;
+        z-index: 2;
+    }
+    /* 시작에서 벗어나면 왼쪽 페이드, 끝에 닿으면 오른쪽 페이드 숨김 */
+    .ad_tab.scrolled::before { opacity: 1; }
+    .ad_tab.at-end::after { opacity: 0; }
 
     .branded { padding: 44px 0 56px; }
-    .branded_title { font-size: 25px; }
+    .branded_title { font-size: 26px; }
     .branded_desc { font-size: 15px; }
 
     .featured { margin-top: 34px; }
@@ -1001,7 +1066,27 @@
     .feat_card .feat_top { flex-wrap: wrap; gap: 8px; }
     .feat_card .feat_title { margin-top: 16px; font-size: 20px; }
     .feat_card .feat_desc { margin-top: 16px; font-size: 15px; }
-    .feat_card .feat_btn { font-size: 15px; padding: 11px 22px; }
+    /* 슬라이더 카드: "캠페인 보기" 버튼 → 오른쪽 ">" 아이콘만 */
+    .feat_card .feat_btn {
+        align-self: flex-end;
+        background: none;
+        padding: 0;
+        font-size: 0;
+        border-radius: 0;
+    }
+    .feat_card .feat_btn:hover { background: none; }
+    .feat_card .feat_btn .material-symbols-outlined { display: none; }
+    .feat_card .feat_btn::after {
+        content: "chevron_right";
+        font-family: "Material Symbols Outlined";
+        font-weight: normal;
+        font-style: normal;
+        font-size: 30px;
+        line-height: 1;
+        color: #161616;
+        -webkit-font-feature-settings: "liga";
+    }
+    .feat_card .feat_btn:hover::after { color: #FF4747; }
 
     /* 폰에서는 캐러셀 화살표를 카드 위에 겹치지 않게 살짝 안쪽 */
     .featured .feat_prev { left: 6px; }
@@ -1009,31 +1094,14 @@
     .featured .feat_nav { width: 38px; height: 38px; }
     .featured .feat_nav .material-symbols-outlined { font-size: 22px; }
 
-    .case_grid { grid-template-columns: 1fr; margin-top: 44px; gap: 32px; }
-    .case_title { font-size: 19px; }
+    /* 케이스 카드: 폰에서 2열 + 글자 축소(좁은 폭 대응) */
+    .case_grid { grid-template-columns: repeat(2, 1fr); margin-top: 44px; gap: 26px 12px; }
+    .case_info { padding: 12px 2px 0; }
+    .case_title { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.3; }
+    .case_meta { gap: 6px; margin-top: 6px; }
+    .case_client, .case_date { font-size: 11px; }
 
     .partners { padding: 48px 0 58px; }
-    .partners_title { font-size: 25px; }
+    .partners_title { font-size: 26px; }
     .partners_desc { font-size: 15px; }
-    .partners_marquee { margin-top: 36px; gap: 12px; }
-    .pt_row { height: 100px; }
-    .pt_track { gap: 32px; padding-left: 32px; }
-    .pt_logo img { height: 70px; }
-    .partners_more_wrap { margin-top: 38px; }
-    .partners_more { font-size: 16px; padding: 12px 30px; }
-
-    /* 모달: 뷰포트에 맞추고 스크롤 가능하게 */
-    .camp_modal { padding: 10px; }
-    .camp_dialog { max-width: 100%; max-height: 92vh; border-radius: 16px; }
-    .camp_close { top: 10px; right: 10px; width: 36px; height: 36px; }
-    .camp_body { padding: 22px 18px 28px; }
-    .camp_title { font-size: 21px; }
-    .camp_desc { font-size: 15px; }
-    .camp_info { padding: 4px 16px; }
-    .camp_row { grid-template-columns: 1fr; gap: 4px; padding: 12px 0; }
-    .camp_play_ico { width: 60px; height: 60px; }
-    .camp_play_ico .material-symbols-outlined { font-size: 36px; }
-    .rel_item { gap: 12px; }
-    .rel_thumb { flex-basis: 110px; width: 110px; }
-    .rel_title { font-size: 15px; }
-}
+    .partners_marquee { margin-

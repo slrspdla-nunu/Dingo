@@ -12,7 +12,7 @@
             detail: {
                 category: "Branded Content",
                 date: "2024년 11월 11일",
-                intro: "🎤 JUST HIT IT!\n음악을 사랑하는 10대를 위한 베이스캠프\n[HIT IT BASE 2024]\n\n빅히트 뮤직만의 힙합 트레이닝을 경험할 수 있는 기회,\n지금 바로 지원하세요!",
+                intro: "🎤 JUST HIT IT!\n음악을 사랑하는 10대를 위한 베이스캠프\n[HIT IT BASE 2024]\n\n빅히트 뮤직만의 힙합 트레이닝을 경험할 수 있는 기회, 지금 바로 지원하세요!",
                 advertiser: "하이브",
                 effect: "하이브 빅히트 'HIT IT BASE 2024' 오디션 프로그램의 온/오프라인 캠페인 운영",
                 related: [
@@ -705,4 +705,66 @@
             }).join("");
         }
     }
+})();
+
+/* 모바일 비즈니스 탭: 가로 스크롤 위치에 따라 좌/우 페이드 토글 + 활성 탭 노출 */
+(function () {
+    var nav = document.querySelector(".ad_tab");
+    if (!nav) return;
+    var ul = nav.querySelector("ul");
+    if (!ul) return;
+    function update() {
+        var max = ul.scrollWidth - ul.clientWidth;
+        nav.classList.toggle("scrolled", ul.scrollLeft > 8);
+        nav.classList.toggle("at-end", max <= 0 || ul.scrollLeft >= max - 8);
+    }
+    ul.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    // 모바일에서 현재(활성) 탭이 보이도록 스크롤 위치 보정
+    if (window.matchMedia("(max-width: 480px)").matches) {
+        var active = ul.querySelector("li.on");
+        if (active && active.scrollIntoView) {
+            active.scrollIntoView({ inline: "center", block: "nearest" });
+        }
+    }
+    update();
+})();
+
+/* 모바일 케이스 그리드: 처음 8개만 + "더보기"로 8개씩 펼침 (데스크톱은 전체 노출) */
+(function () {
+    var grid = document.getElementById("case_grid");
+    if (!grid) return;
+    var cards = [].slice.call(grid.children);
+    if (!cards.length) return;
+    var STEP = 8, shown = STEP;
+    var wrap = document.createElement("div");
+    wrap.className = "cases_more_wrap";
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "cases_more";
+    wrap.appendChild(btn);
+    grid.parentNode.insertBefore(wrap, grid.nextSibling);
+    var mq = window.matchMedia("(max-width: 768px)");
+    function apply() {
+        if (mq.matches) {
+            cards.forEach(function (c, i) {
+                if (i < shown) { c.style.display = ""; c.classList.add("in"); }
+                else { c.style.display = "none"; }
+            });
+            if (shown < cards.length) {
+                wrap.classList.add("show");
+                btn.textContent = "더보기 " + (shown / STEP) + "/" + Math.ceil((cards.length - STEP) / STEP);
+            } else {
+                wrap.classList.remove("show");
+            }
+        } else {
+            cards.forEach(function (c) { c.style.display = ""; });
+            wrap.classList.remove("show");
+        }
+    }
+    btn.addEventListener("click", function () { shown += STEP; apply(); });
+    function onChange() { shown = STEP; apply(); }
+    if (mq.addEventListener) mq.addEventListener("change", onChange);
+    else if (mq.addListener) mq.addListener(onChange);
+    apply();
 })();

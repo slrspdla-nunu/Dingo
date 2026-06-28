@@ -384,6 +384,10 @@
 /* 모바일 가로 스크롤 힌트 화살표 (스와이프 유도) */
 @keyframes hintNudge {
     0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-50%) translateX(6px); }
+}
+@keyframes hintNudgeLeft {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
     50% { transform: translateY(-50%) translateX(-6px); }
 }
 
@@ -465,6 +469,7 @@
 
     .stats_sec .stat strong { font-size: 30px; }
     .stats_sec .stat span { font-size: 17px; }
+    .stats_sec .stat img { height: 40px; }
 
     .chart_card { padding: 30px 22px 24px; }
     .chart_label { font-size: 20px; padding: 12px 30px; }
@@ -509,7 +514,7 @@
     .stats_sec .stat_card { padding: 40px 0; gap: 28px; border-radius: 18px; }
     .stats_sec .stat strong { font-size: 32px; }
     .stats_sec .stat span { font-size: 16px; }
-    .stats_sec .stat img { height: 48px; }
+    .stats_sec .stat img { height: 30px; }
 
     .charts_sec { padding: 24px 0 70px; }
     .chart_card { padding: 24px 16px 20px; border-radius: 18px; }
@@ -520,6 +525,7 @@
     .stacked .seg.red span { font-size: 11px; }
     /* 그룹 차트: 가로 스크롤 + 막대/묶음간격 키워 가독성 ↑ */
     .charts_sec .grouped { position: relative; }
+    /* 오른쪽 힌트(더 스크롤 가능): 기본 표시, 끝에 닿으면 숨김 */
     .charts_sec .grouped::after {
         content: "";
         position: absolute;
@@ -532,9 +538,31 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
         pointer-events: none;
         z-index: 3;
+        opacity: 1;
+        transition: opacity 0.3s;
         animation: hintNudge 1.4s ease-in-out infinite;
     }
-    .charts_sec .grouped.scrolled::after { opacity: 0; transition: opacity 0.3s; }
+    /* 왼쪽 힌트(되돌아갈 수 있음): 기본 숨김, 스크롤 시작하면 표시 */
+    .charts_sec .grouped::before {
+        content: "";
+        position: absolute;
+        top: 48%;
+        left: 8px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF4747' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 6 9 12 15 18'/%3E%3C/svg%3E") center / 14px no-repeat;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+        pointer-events: none;
+        z-index: 3;
+        opacity: 0;
+        transition: opacity 0.3s;
+        animation: hintNudgeLeft 1.4s ease-in-out infinite;
+    }
+    /* 끝에 닿으면 오른쪽 힌트 숨김 */
+    .charts_sec .grouped.at-end::after { opacity: 0; }
+    /* 시작 지점에서 벗어나면 왼쪽 힌트 표시 */
+    .charts_sec .grouped.scrolled::before { opacity: 1; }
     .grouped .bars { overflow-x: auto; justify-content: flex-start; gap: 22px; padding-bottom: 6px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     .grouped .bars::-webkit-scrollbar { display: none; }
     .grouped .col { flex: 0 0 auto; }

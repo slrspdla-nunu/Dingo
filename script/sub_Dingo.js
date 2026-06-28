@@ -145,13 +145,20 @@
     start();
 })();
 
-/* 그룹 차트 가로 스크롤 시 힌트 화살표 숨김 */
+/* 그룹 차트 가로 스크롤 위치에 따라 좌/우 힌트 화살표 표시 */
 (function () {
     var g = document.querySelector(".charts_sec .grouped");
     if (!g) return;
     var bars = g.querySelector(".bars");
     if (!bars) return;
-    bars.addEventListener("scroll", function () {
-        if (bars.scrollLeft > 10) g.classList.add("scrolled");
-    }, { passive: true });
+    function update() {
+        var maxScroll = bars.scrollWidth - bars.clientWidth;
+        // 시작 지점에서 벗어났는지 → 왼쪽(되돌아가기) 힌트
+        g.classList.toggle("scrolled", bars.scrollLeft > 10);
+        // 끝에 닿았거나 스크롤할 게 없으면 → 오른쪽(더 보기) 힌트 숨김
+        g.classList.toggle("at-end", maxScroll <= 0 || bars.scrollLeft >= maxScroll - 10);
+    }
+    bars.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
 })();
