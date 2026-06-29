@@ -2,6 +2,10 @@
 @import url(font.css);
 @import url(reset.css);
 
+/* 장식 이미지(레코드 디스크·음표 등)가 화면 밖으로 삐져나와 가로 스크롤을 만드는 것 방지.
+   clip 은 스크롤 컨테이너를 만들지 않아 position:sticky(탭 메뉴 등)에 영향 없음. 전역 적용. */
+html { overflow-x: clip; }
+
 header {
     max-width: 1400px;
     position: absolute;
@@ -1748,6 +1752,10 @@ body.scroll-fx .reveal.in {
     header nav .gnb li a { padding: 8px 30px; font-size: 18px; }
     #hero .info_text { left: 40px; }
     .hero_paging { right: 24px; }
+    /* 화면이 좁아지면 헤더 아이콘이 화면 끝에 바짝 붙지 않도록 24px 들이고(플로팅 버튼과 동일),
+       언어/공유 아이콘 사이 간격도 축소 */
+    header .menu_box { padding: 0 24px; box-sizing: border-box; }
+    header .icon_box { gap: 24px; }
 }
 
 /* ---------- 태블릿 (≤1080px) ---------- */
@@ -1756,16 +1764,28 @@ body.scroll-fx .reveal.in {
     header nav .gnb li a { padding: 8px 18px; font-size: 16px; }
     header .left_space, header .icon_box { width: 90px; }
 
+    /* GNB 드롭다운(lnb): 메뉴 li 가 좁아져도 서브메뉴 텍스트가 잘리지 않도록 내용 너비에 맞춰 펼침
+       + 전환을 빠르게(0.2s) 하여 옆 메뉴로 옮길 때 이전 드롭다운이 천천히 닫히며 겹치는 현상 방지 */
+    header nav .gnb li .lnb,
+    header nav .gnb li:hover .lnb { width: max-content; min-width: 100%; transition: 0.2s; }
+    header nav .gnb li .lnb li a { padding: 9px 18px; white-space: nowrap; font-size: 15px; }
+
     /* 큐레이션 카드: 큰 카드 + 작은 카드 세로로 */
     #section_box #section01 .container { width: calc(100% - 48px); }
     #section_box #section01 .container .card_container { flex-direction: column; gap: 24px; }
     .card_big, .card_small { width: 100%; }
     .card_big figure img { height: auto; }
 
-    /* 하단 배너 4칸 → 2x2 */
-    .inner_box ul { flex-wrap: wrap; }
-    .inner_box ul .banner_box { width: calc(50% - 25px); flex-grow: 0; box-sizing: border-box; }
-    .inner_box ul .banner_box:nth-child(2) { border-right: none; margin-right: 0; padding-right: 0; }
+    /* 하단 배너 4칸 → 2x2 : 각 칸을 정확히 50%로 만들어 가운데 구분선을 정중앙에,
+       구분선 양옆 가로 여백을 대칭(40px)으로 확보 */
+    .inner_box ul { flex-wrap: wrap; row-gap: 32px; position: relative; }
+    /* 가운데 구분선: 박스 테두리 대신 중앙을 가로지르는 연속 1줄 (행 간격에도 끊기지 않음) */
+    .inner_box ul::after { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; background: #D9D9D9; }
+    .inner_box ul .banner_box { width: 50%; flex-grow: 0; box-sizing: border-box; margin-right: 0; }
+    .inner_box ul .banner_box:nth-child(odd) { border-right: none; padding-right: 40px; }
+    .inner_box ul .banner_box:nth-child(even) { border-right: none; padding-right: 0; padding-left: 40px; }
+    /* 태블릿에서 아이콘 크기 축소 (기본 100px → 72px) */
+    .inner_box ul .banner_box figure img { width: 72px; height: auto; }
 
     /* section02: 텍스트 + 카드 세로 */
     #section02 { height: auto; padding: 80px 0; }
@@ -1782,6 +1802,14 @@ body.scroll-fx .reveal.in {
     /* 떠다니는 장식은 좁은 화면에서 넘치므로 숨김 */
     #section03 .section03_deco,
     #section_box #section01 .container .deco { display: none; }
+
+    /* section03 타이틀: Killing Voice ~ Playlist 를 한 줄로, 검색창은 폭 축소해 사이 여백 확보 */
+    #section03 .section03_title { flex-wrap: nowrap; gap: 24px; }
+    #section03 .section03_title h2 { font-size: 28px; gap: 14px; flex-shrink: 0; flex-wrap: nowrap; }
+    #section03 .section03_title h2 span,
+    #section03 .section03_title h2 em { white-space: nowrap; }
+    #section03 .section03_title h2 i { width: 56px; flex-shrink: 0; }
+    #section03 .playlist_search { width: 280px; flex-shrink: 0; }
 }
 
 /* ---------- 태블릿 세로 / 큰 모바일 (≤768px) : 햄버거 메뉴 ---------- */
@@ -1951,6 +1979,9 @@ body.scroll-fx .reveal.in {
 
     /* 하단 배너 1열 + 아이콘/텍스트 정렬·패딩 정리 */
     .bottom_banner .inner_box { padding: 16px 25px; margin-top: 40px; }
+    /* 1열에서는 가운데 세로선 제거, 행 간격도 원래대로(패딩+밑줄로 처리) */
+    .inner_box ul { row-gap: 0; }
+    .inner_box ul::after { display: none; }
     .inner_box ul .banner_box { width: 100%; gap: 25px; align-items: center; justify-content: flex-start; margin: 0; padding: 16px 0; border-right: none; border-bottom: 1px solid #D9D9D9; }
     .inner_box ul .banner_box .text_box { flex: 1; }
     .inner_box ul .banner_box:first-child { padding-top: 0; }

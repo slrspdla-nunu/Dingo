@@ -409,9 +409,9 @@
 @media (max-width: 1080px) {
     .dingo_main .container { width: calc(100% - 60px); }
 
-    #sub_hero { height: auto; min-height: 560px; padding: 120px 0 90px; }
-    #sub_hero .hero_inner { width: calc(100% - 60px); }
-    #sub_hero .hero_title { font-size: 48px; }
+    #sub_hero { height: 560px; }
+    #sub_hero .hero_inner { width: calc(100% - 56px); }
+    #sub_hero .hero_title { font-size: 46px; }
     #sub_hero .hero_sub { font-size: 24px; }
 
     .dingo_tab { width: calc(100% - 60px); }
@@ -426,14 +426,15 @@
     .stats_sec .stat span { font-size: 18px; }
 
     .charts_sec { padding: 30px 0 90px; }
-    .charts { flex-direction: column; }
+    /* 세로로 쌓일 때 차트 사이(=전체 디지털 콘텐츠 버튼 아래) 여백 확대: About의 sec2_grid(50px)와 동일 */
+    .charts { flex-direction: column; gap: 50px; }
     .charts_title { margin-bottom: 40px; }
     .chart_card { padding: 36px 28px 28px; }
 }
 
 /* ===== Existing 1100 kept for safety / desktop-down ===== */
 @media (max-width: 1100px) {
-    #sub_hero .hero_title { font-size: 48px; }
+    #sub_hero .hero_title { font-size: 46px; }
     .intro_title, .charts_title { font-size: 34px; }
     .stats_sec .stat strong { font-size: 34px; }
     .stats_sec .stat span { font-size: 18px; }

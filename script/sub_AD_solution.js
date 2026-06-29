@@ -483,8 +483,10 @@
             '</a>' +
             '<div class="feat_info">' +
             '<div class="feat_top"><span class="feat_brand" title="' + c.client + '">' + c.client + '</span><span class="feat_date">' + (c.date || '') + '</span></div>' +
+            '<div class="feat_titlerow">' +
             '<h4 class="feat_title">' + c.title + '</h4>' +
             '<a class="feat_btn" href="' + watchUrl(c) + '" data-idx="' + current + '">캠페인 보기 <span class="material-symbols-outlined">arrow_forward</span></a>' +
+            '</div>' +
             '</div>';
         // 슬라이드 인 (높이는 고정이라 아래 카드는 움직이지 않음)
         featCard.style.transition = "none";

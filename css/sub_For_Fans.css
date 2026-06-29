@@ -303,6 +303,11 @@
 /* ============================================================
    반응형
    ============================================================ */
+/* 데스크톱보다 좁은 화면(태블릿)에서는 EVENT/COMMUNITY/FAN BENEFIT 아이콘을 살짝 축소 */
+@media (max-width: 1200px) {
+    .fans_feature .feature_card .feat_icon { height: 60px; margin-bottom: 16px; }
+}
+
 @media (max-width: 1080px) {
     /* HERO scales down on tablet */
     #fans_hero {
@@ -342,6 +347,9 @@
     .fans_intro .intro_left {
         width: 100%;
         max-width: 640px;
+        /* With Dingo 텍스트는 가운데가 아닌 왼쪽 정렬 */
+        text-align: left;
+        align-self: flex-start;
     }
     .fans_intro .intro_desc br {
         display: none;

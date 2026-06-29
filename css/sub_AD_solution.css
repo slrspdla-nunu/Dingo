@@ -251,6 +251,9 @@
     color: #6D6D6D;
 }
 
+/* 기본(데스크톱): 래퍼를 투명하게 → 제목/버튼이 기존처럼 feat_info 의 직접 자식으로 동작 */
+.feat_card .feat_titlerow { display: contents; }
+
 .feat_card .feat_title {
     margin-top: 30px;
     font-size: 30px;
@@ -918,7 +921,8 @@
     #ad_hero .hero_deco.d3 { left: 88%; top: 64%; }
 
     .ad_tab { margin: -40px auto 0; }
-    .ad_tab li a { font-size: 18px; padding: 20px 0; }
+    /* 항목이 5개라 18px에선 'Live Entertainment'만 2줄로 깨짐 → 폰트 축소 + nowrap 으로 모두 한 줄, 균등 정렬 */
+    .ad_tab li a { font-size: 15px; padding: 22px 2px; white-space: nowrap; }
 
     .branded { padding: 70px 0 90px; }
     .branded_title { font-size: 38px; }
@@ -928,6 +932,32 @@
     .feat_card .feat_thumb { flex: none; aspect-ratio: 16/9; }
     .feat_card .feat_info { padding: 40px 38px; }
     .feat_card .feat_title { font-size: 26px; }
+    /* 제목 + ">" 아이콘을 한 줄에: 래퍼를 가로 flex 로, 제목 왼쪽 / 아이콘 오른쪽 세로 중앙 정렬 */
+    .feat_card .feat_titlerow { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 30px; }
+    .feat_card .feat_titlerow .feat_title { margin-top: 0; }
+    /* 캠페인 보기 버튼: 모바일과 동일하게 텍스트 숨기고 ">" 아이콘만 (제목과 같은 줄 오른쪽) */
+    .feat_card .feat_btn {
+        align-self: center;
+        margin-top: 0;
+        flex-shrink: 0;
+        background: none;
+        padding: 0;
+        font-size: 0;
+        border-radius: 0;
+    }
+    .feat_card .feat_btn:hover { background: none; }
+    .feat_card .feat_btn .material-symbols-outlined { display: none; }
+    .feat_card .feat_btn::after {
+        content: "chevron_right";
+        font-family: "Material Symbols Outlined";
+        font-weight: normal;
+        font-style: normal;
+        font-size: 30px;
+        line-height: 1;
+        color: #161616;
+        -webkit-font-feature-settings: "liga";
+    }
+    .feat_card .feat_btn:hover::after { color: #FF4747; }
 
     .case_grid { grid-template-columns: repeat(2, 1fr); gap: 44px 26px; }
     .case_title { font-size: 20px; }
@@ -973,7 +1003,7 @@
     .feat_card .feat_info { padding: 32px 28px; }
     .feat_card .feat_title { margin-top: 22px; font-size: 23px; }
     .feat_card .feat_desc { font-size: 16px; }
-    .feat_card .feat_btn { font-size: 16px; padding: 12px 26px; }
+    /* feat_btn 은 ≤1080 에서 이미 ">" 아이콘으로 처리됨 (텍스트 버튼 스타일 제거) */
 
     .case_grid { margin-top: 56px; gap: 36px 22px; }
     /* 모바일: 카드의 광고주·날짜 숨김 */
