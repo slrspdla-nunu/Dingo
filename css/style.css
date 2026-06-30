@@ -967,8 +967,8 @@ html { scroll-behavior: smooth; }
 
 #section03 .deco_loop_player {
     width: 154px;
-    left: 598px;
-    top: -15px;
+    left: 705px;            /* 드래그 안내 말풍선과 겹치지 않도록 오른쪽으로 이동 */
+    top: -52px;
     transform: rotate(8.07deg);
 }
 
@@ -2056,4 +2056,43 @@ body.scroll-fx .reveal.in {
     #section02 .container .text_box h2 { font-size: 32px; }
     #section03 .section03_title h2 { font-size: 24px; }
     #section03 .record_area { zoom: 0.42; width: 744px; margin: 0 auto; }
+}
+
+/* ===== 톤암 드래그 안내 말풍선 =====
+   .record_area 안에 고정 좌표로 배치 → 데스크톱/모바일(zoom 축소) 모든 화면에서 비율 유지.
+   위에서 '동동' 떠 있도록 부드럽게 위아래로 움직인다. */
+#section03 .record_area .arm_hint {
+    position: absolute;
+    left: 540px;
+    top: -6px;
+    z-index: 5;
+    background: #FF0F0F;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    padding: 10px 15px;
+    border-radius: 999px;
+    box-shadow: 0 6px 16px rgba(255, 15, 15, 0.38);
+    pointer-events: none;
+    animation: armHintFloat 1.8s ease-in-out infinite;
+}
+#section03 .record_area .arm_hint::after {
+    content: "";
+    position: absolute;
+    left: 92px;
+    bottom: -7px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 8px solid #FF0F0F;
+}
+@keyframes armHintFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-7px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    #section03 .record_area .arm_hint { animation: none; }
 }

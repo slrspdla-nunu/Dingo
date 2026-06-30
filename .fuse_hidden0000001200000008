@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AD solution | dingo</title>
+    <title>Dingo | dingo</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/sub_AD_solution.css">
+    <link rel="stylesheet" href="css/sub_Dingo.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
-<body class="sub_page ad_page">
+<body class="sub_page dingo_page">
 
     <header>
         <h1><a href="index.html"><img src="image/main/logo.png" alt="logo"></a></h1>
@@ -64,58 +64,92 @@
         </div>
 
     <!-- HERO -->
-    <section id="ad_hero">
+    <section id="sub_hero">
         <img src="image/sub_About/deco1.png" alt="" class="hero_deco d1">
         <img src="image/sub_About/deco2.png" alt="" class="hero_deco d2">
         <img src="image/sub_About/deco6.png" alt="" class="hero_deco d3">
         <div class="hero_inner">
-            <h2 class="hero_title"><span class="ad">AD</span> solution</h2>
-            <ul class="hero_pills">
-                <li class="on"><a href="#">Branded Content</a></li>
-                <li><a href="#partners">Partners</a></li>
-            </ul>
+            <h2 class="hero_title">Dingo</h2>
+            <p class="hero_sub">디지털 콘텐츠 미디어 '딩고'는 꾸준한 화제성과 <br>압도적인 Viewership을 창출하며 <br>독보적인 규모의 구독자를 보유하고 있습니다.</p>
         </div>
     </section>
 
-    <!-- BUSINESS TAB BAR -->
-    <nav class="ad_tab">
+    <!-- TAB NAV -->
+    <nav class="dingo_tab">
         <ul>
-            <li class="on"><a href="sub_AD_solution.html">AD solution</a></li>
-            <li><a href="#">Live Entertainment</a></li>
-            <li><a href="#">Dingo Members</a></li>
-            <li><a href="#">Dingo Partners</a></li>
-            <li><a href="#">MMG</a></li>
+            <li class="on"><a href="sub_Dingo.html">Dingo</a></li>
+            <li><a href="#">Dingo <br class="tab_br">Channel</a></li>
+            <li><a href="#">Dingo <br class="tab_br">Original</a></li>
         </ul>
     </nav>
 
-    <main class="ad_main">
-        <section class="branded">
+    <main class="dingo_main">
+
+        <!-- INTRO -->
+        <section class="intro">
             <div class="container">
-                <h3 class="branded_title reveal">Branded <span>Content</span></h3>
-                <p class="branded_desc reveal"><span class="s">독보적인 콘텐츠 제작 역량을 바탕으로, 디지털 광고 시장에서 브랜디드 콘텐츠와 PPL 등 <br>광고주의 요구에 맞춘 맞춤영 광고를 제작하고 집행합니다.</span><br><span class="s">브랜드 콜라보 음원 제작, 다양한 오리지널 포맷 활용, 브랜드 맞춤 기획 콘텐츠, <br>연간 소셜 채널 운영, 온/오프라인 통합 캠페인 등 다양한 산업의 광고주에게 최적화된 솔루션을 제공합니다.</span></p>
-
-
-                <!-- 피처 캐러셀 -->
-                <div class="featured reveal">
-                    <button type="button" class="feat_nav feat_prev" aria-label="이전"><span class="material-symbols-outlined">chevron_left</span></button>
-                    <div class="feat_card" id="feat_card"></div>
-                    <button type="button" class="feat_nav feat_next" aria-label="다음"><span class="material-symbols-outlined">chevron_right</span></button>
-                </div>
-
-                <!-- 3열 케이스 그리드 -->
-                <ul class="case_grid" id="case_grid"></ul>
+                <h3 class="intro_title reveal">디지털 콘텐츠를 기획하고 제작하는 <br>콘텐츠 미디어 <span>No.1</span></h3>
             </div>
         </section>
 
-        <!-- PARTNERS -->
-        <section class="partners" id="partners">
+        <!-- SECTION 01 : 통계 -->
+        <section class="stats_sec">
             <div class="container">
-                <h3 class="partners_title reveal">Partners</h3>
-                <p class="partners_desc reveal">독자적인 IP(오리지널 콘텐츠)와 파트너십 IP(제작 투자 콘텐츠)를 활용한 광고 등 다양한 형태의 솔루션을 제공하며,<br>연평균 50개 이상의 광고 파트너사와 협력하고 있습니다.</p>
+                <div class="stats_track">
+                <div class="stat_card reveal">
+                    <div class="stat">
+                        <img src="image/sub_Dingo/sec1_icon1.png" alt="">
+                        <strong class="c_red">212,000+</strong>
+                        <span>전체 디지털 콘텐츠</span>
+                    </div>
+                    <div class="stat">
+                        <img src="image/sub_Dingo/sec1_icon2.png" alt="">
+                        <strong class="c_orange">4,580만+</strong>
+                        <span>전체 채널 구독자</span>
+                    </div>
+                    <div class="stat">
+                        <img src="image/sub_Dingo/sec1_icon3.png" alt="">
+                        <strong class="c_green">1.5억+</strong>
+                        <span>전체 채널 월 평균 조회수</span>
+                    </div>
+                </div>
+                <div class="stat_card reveal">
+                    <div class="stat">
+                        <img src="image/sub_Dingo/sec1_icon4.png" alt="">
+                        <strong>33,810+</strong>
+                        <span>YouTube 채널 누적 콘텐츠</span>
+                    </div>
+                    <div class="stat">
+                        <img src="image/sub_Dingo/sec1_icon5.png" alt="">
+                        <strong>5.1억+</strong>
+                        <span>YouTebe 채널 누적 시청 시간</span>
+                    </div>
+                    <div class="stat">
+                        <img src="image/sub_Dingo/sec1_icon6.png" alt="">
+                        <strong>650만+</strong>
+                        <span>YouTube 채널 월 평균 시청 시간</span>
+                    </div>
+                </div>
+                </div>
+                <div class="stats_dots"><span class="on"></span><span></span></div>
             </div>
+        </section>
 
-            <!-- 파트너 로고 마퀴 (JS로 렌더) -->
-            <div class="partners_marquee reveal" id="partners_marquee"></div>
+        <!-- SECTION 02 : 차트 -->
+        <section class="charts_sec">
+            <div class="container">
+                <h3 class="charts_title reveal"><span>18-34세</span> 타깃에 <br>가장 <span>최적화</span>된 디지털 콘텐츠 미디어</h3>
+                <div class="charts">
+                    <div class="chart_wrap reveal">
+                        <div class="chart_card" id="chart_stacked"></div>
+                        <div class="chart_label">전체 디지털 콘텐츠</div>
+                    </div>
+                    <div class="chart_wrap reveal">
+                        <div class="chart_card" id="chart_grouped"></div>
+                        <div class="chart_label">전체 채널 구독자</div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -132,10 +166,9 @@
         </div>
     </footer>
 
-<script src="script/highlighter.js"></script>
 <script src="script/jquery-4.0.0.min.js"></script>
 <script src="script/header.js"></script>
-<script src="script/partners_logos.js"></script>
-<script src="script/sub_AD_solution.js"></script>
+<script src="script/sub_Dingo.js"></script>
+<script src="script/highlighter.js"></script>
 </body>
 </html>

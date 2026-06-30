@@ -316,7 +316,6 @@
                             </figure>
                             <img src="image/main/record_img.png" alt="" class="record_img">
                             <img src="image/main/record_teg_img.png" alt="" class="record_arm">
-                            <span class="arm_hint" aria-hidden="true">드래그해보세요!</span>
                         </div>
 
                         <div class="now_playing">
@@ -440,7 +439,6 @@
 
 
 <div id="yt-player"></div>
-<script src="script/highlighter.js"></script>
 <script src="script/jquery-4.0.0.min.js"></script>
 <script src="script/action.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>

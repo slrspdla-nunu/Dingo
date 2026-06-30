@@ -132,10 +132,10 @@
         </div>
     </footer>
 
-<script src="script/highlighter.js"></script>
 <script src="script/jquery-4.0.0.min.js"></script>
 <script src="script/header.js"></script>
 <script src="script/partners_logos.js"></script>
 <script src="script/sub_AD_solution.js"></script>
+<script src="script/highlighter.js"></script>
 </body>
 </html>
